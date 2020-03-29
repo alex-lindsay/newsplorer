@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 
 import styles from "./MainAppBar.module.css";
 
+// refer to https://material-ui.com/components/app-bar/#PrimarySearchAppBar.js
 class MainAppBar extends Component {
   render() {
     return (
