@@ -2,11 +2,13 @@ import React from "react";
 import styles from "./CountryMenu.module.css";
 
 import IconButton from "@material-ui/core/IconButton";
+import Badge from "@material-ui/core/Badge";
 import LanguageIcon from "@material-ui/icons/Language";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
 const CountryMenu = props => {
+  console.log("CountryMenu", props);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -20,6 +22,7 @@ const CountryMenu = props => {
       event.currentTarget.dataset.country
     );
     setAnchorEl(null);
+    props.setCountry(event.currentTarget.dataset.country);
   };
 
   const menuItems = props.countries
@@ -31,15 +34,22 @@ const CountryMenu = props => {
     : null;
   return (
     <div className={styles.CountryMenu} data-testid="country-menu">
-      <IconButton
-        aria-label="account of current user"
-        aria-controls="menu-countrymenu"
-        aria-haspopup="true"
-        onClick={handleMenu}
-        color="inherit"
+      <Badge
+        badgeContent={props.country}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        color="secondary"
+        overlap="circle"
       >
-        <LanguageIcon />
-      </IconButton>
+        <IconButton
+          aria-label="account of current user"
+          aria-controls="menu-countrymenu"
+          aria-haspopup="true"
+          onClick={handleMenu}
+          color="inherit"
+        >
+          <LanguageIcon />
+        </IconButton>
+      </Badge>
       <Menu
         id="menu-countrymenu"
         anchorEl={anchorEl}
