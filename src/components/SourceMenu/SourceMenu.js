@@ -5,6 +5,7 @@ import IconButton from "@material-ui/core/IconButton";
 import BusinessIcon from "@material-ui/icons/Business";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const SourceMenu = props => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -26,13 +27,16 @@ const SourceMenu = props => {
     ? props.sources
         .sort((l, r) => (l.name < r.name ? -1 : 1))
         .map(source => (
-          <MenuItem
+          <Tooltip
             key={source.name}
-            onClick={handleClose}
-            data-source={source.name}
+            title={source.description}
+            placement="right"
+            aria-label={source.description}
           >
-            {source.name}
-          </MenuItem>
+            <MenuItem onClick={handleClose} data-source={source.name}>
+              {source.name}
+            </MenuItem>
+          </Tooltip>
         ))
     : null;
   return (
