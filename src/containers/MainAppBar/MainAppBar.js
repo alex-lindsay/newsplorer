@@ -8,6 +8,7 @@ import styles from "./MainAppBar.module.css";
 import CountryMenu from "../../components/CountryMenu/CountryMenu";
 import LanguageMenu from "../../components/LanguageMenu/LanguageMenu";
 import CategoryMenu from "../../components/CategoryMenu/CategoryMenu";
+import SourceMenu from "../../components/SourceMenu/SourceMenu";
 
 import { sampleCountries } from "../../data/sample_countries";
 import { sampleLanguages } from "../../data/sample_languages";
@@ -36,6 +37,7 @@ class MainAppBar extends Component {
             <CountryMenu countries={sampleCountries} />
             <LanguageMenu languages={sampleLanguages} />
             <CategoryMenu categories={sampleCategories} />
+            <SourceMenu sources={sampleSources.sources} />
           </Toolbar>
         </AppBar>
       </div>
