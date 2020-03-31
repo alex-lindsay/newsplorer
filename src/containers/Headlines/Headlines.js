@@ -9,18 +9,10 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 
 import { sampleHeadlines } from "../../data/sample_headlines";
-import { sampleSources } from "../../data/sample_sources";
-import { sampleCategories } from "../../data/sample_categories";
-import { sampleLanguages } from "../../data/sample_languages";
-import { sampleCountries } from "../../data/sample_countries";
 
 class Headlines extends Component {
   render() {
     let rows = sampleHeadlines.articles;
-    console.log({ sources: sampleSources.sources });
-    console.log({ categories: sampleCategories });
-    console.log({ languages: sampleLanguages });
-    console.log({ countries: sampleCountries });
     return (
       <Container className={styles.Headlines} data-testid="headlines">
         <TableContainer component={Paper}>

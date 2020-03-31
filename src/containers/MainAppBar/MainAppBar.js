@@ -5,9 +5,20 @@ import Typography from "@material-ui/core/Typography";
 
 import styles from "./MainAppBar.module.css";
 
+import CountryMenu from "../../components/CountryMenu/CountryMenu";
+
+import { sampleSources } from "../../data/sample_sources";
+import { sampleCategories } from "../../data/sample_categories";
+import { sampleLanguages } from "../../data/sample_languages";
+import { sampleCountries } from "../../data/sample_countries";
+
 // refer to https://material-ui.com/components/app-bar/#PrimarySearchAppBar.js
 class MainAppBar extends Component {
   render() {
+    // console.log({ sources: sampleSources.sources });
+    // console.log({ categories: sampleCategories });
+    // console.log({ languages: sampleLanguages });
+
     return (
       <div className={styles.grow} data-testid="main-app-bar">
         <AppBar position="static" data-testid="app-bar">
@@ -20,6 +31,7 @@ class MainAppBar extends Component {
             >
               Material-UI
             </Typography>
+            <CountryMenu countries={sampleCountries} />
           </Toolbar>
         </AppBar>
       </div>
