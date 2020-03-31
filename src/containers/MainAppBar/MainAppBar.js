@@ -32,7 +32,7 @@ class MainAppBar extends Component {
               noWrap
               data-testid="title"
             >
-              Material-UI
+              Newsfeed Browser
             </Typography>
             <CountryMenu countries={sampleCountries} />
             <LanguageMenu languages={sampleLanguages} />
