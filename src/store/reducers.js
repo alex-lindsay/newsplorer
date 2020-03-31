@@ -3,42 +3,43 @@ import { sampleSources } from "../data/sample_sources";
 import { sampleCategories } from "../data/sample_categories";
 import { sampleLanguages } from "../data/sample_languages";
 import { sampleCountries } from "../data/sample_countries";
-import { combineReducers } from "redux";
+// import { combineReducers } from "redux";
 
-const initialState = {
-  showStory: false,
+export const initialState = {
+  country: null,
   countries: sampleCountries,
+  language: null,
   languages: sampleLanguages,
+  category: null,
   categories: sampleCategories,
+  source: null,
   sources: sampleSources.sources,
   headlines: sampleHeadlines.articles,
-  source: null,
-  category: null,
-  language: null,
-  country: null,
+  showStory: false,
   story: null,
 };
 
-function country(oldState = initialState, action) {
-  let state = oldState.country;
-  console.log("country reducer", { state });
+function appReducer(oldState = initialState, action) {
+  let state = { ...oldState };
+  state.countries = [...oldState.countries];
+  state.languages = [...oldState.languages];
   switch (action.type) {
     case "SET_COUNTRY":
-      return action.country !== "" ? action.country : null;
+      if (action.country !== undefined) {
+        state.country = action.country !== "" ? action.country : null;
+      }
+      break;
+    case "SET_LANGUAGE":
+      if (action.language !== undefined) {
+        state.language = action.language !== "" ? action.language : null;
+      }
+      break;
     default:
       return state;
   }
+  return state;
 }
 
-function countries(oldState = initialState, action) {
-  let state = oldState.countries;
-  console.log("countries reducer", { state });
-  switch (action.type) {
-    default:
-      return state;
-  }
-}
-
-const appReducer = combineReducers({ country, countries });
+// const appReducer = combineReducers({ country, countries, language, languages });
 
 export default appReducer;

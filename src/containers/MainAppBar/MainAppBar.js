@@ -12,7 +12,7 @@ import LanguageMenu from "../../components/LanguageMenu/LanguageMenu";
 import CategoryMenu from "../../components/CategoryMenu/CategoryMenu";
 import SourceMenu from "../../components/SourceMenu/SourceMenu";
 
-import { setCountry } from "../../store/actions";
+import { setCountry, setLanguage } from "../../store/actions";
 
 import { sampleCountries } from "../../data/sample_countries";
 import { sampleLanguages } from "../../data/sample_languages";
@@ -22,7 +22,6 @@ import { sampleSources } from "../../data/sample_sources";
 // refer to https://material-ui.com/components/app-bar/#PrimarySearchAppBar.js
 class MainAppBar extends Component {
   render() {
-    console.log("MainAppBar.render props", this.props);
     return (
       <div className={styles.grow} data-testid="main-app-bar">
         <AppBar position="static" data-testid="app-bar">
@@ -40,7 +39,11 @@ class MainAppBar extends Component {
               countries={this.props.countries}
               setCountry={this.props.setCountry}
             />
-            <LanguageMenu languages={sampleLanguages} />
+            <LanguageMenu
+              language={this.props.language}
+              languages={this.props.languages}
+              setLanguage={this.props.setLanguage}
+            />
             <CategoryMenu categories={sampleCategories} />
             <SourceMenu sources={sampleSources.sources} />
           </Toolbar>
@@ -51,15 +54,13 @@ class MainAppBar extends Component {
 }
 
 const mapStateToProps = state => {
-  return {
-    country: state.country,
-    countries: state.countries,
-  };
+  return state;
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     setCountry: country => dispatch(setCountry(country)),
+    setLanguage: language => dispatch(setLanguage(language)),
   };
 };
 

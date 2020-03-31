@@ -8,7 +8,6 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
 const CountryMenu = props => {
-  console.log("CountryMenu", props);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -16,11 +15,6 @@ const CountryMenu = props => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = event => {
-    console.log(
-      "CountryMenu clicked",
-      event.currentTarget,
-      event.currentTarget.dataset.country
-    );
     setAnchorEl(null);
     props.setCountry(event.currentTarget.dataset.country);
   };

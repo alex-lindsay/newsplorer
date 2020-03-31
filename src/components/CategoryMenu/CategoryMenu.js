@@ -14,11 +14,6 @@ const CategoryMenu = props => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = event => {
-    console.log(
-      "CategoryMenu clicked",
-      event.currentTarget,
-      event.currentTarget.dataset.category
-    );
     setAnchorEl(null);
   };
 

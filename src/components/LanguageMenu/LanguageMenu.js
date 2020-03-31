@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./LanguageMenu.module.css";
 
 import IconButton from "@material-ui/core/IconButton";
+import Badge from "@material-ui/core/Badge";
 import TranslateIcon from "@material-ui/icons/Translate";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -14,12 +15,8 @@ const LanguageMenu = props => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = event => {
-    console.log(
-      "LanguageMenu clicked",
-      event.currentTarget,
-      event.currentTarget.dataset.language
-    );
     setAnchorEl(null);
+    props.setLanguage(event.currentTarget.dataset.language);
   };
 
   const menuItems = props.languages
@@ -31,15 +28,22 @@ const LanguageMenu = props => {
     : null;
   return (
     <div className={styles.LanguageMenu} data-testid="language-menu">
-      <IconButton
-        aria-label="account of current user"
-        aria-controls="menu-languagemenu"
-        aria-haspopup="true"
-        onClick={handleMenu}
-        color="inherit"
+      <Badge
+        badgeContent={props.language}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        color="secondary"
+        overlap="circle"
       >
-        <TranslateIcon />
-      </IconButton>
+        <IconButton
+          aria-label="account of current user"
+          aria-controls="menu-languagemenu"
+          aria-haspopup="true"
+          onClick={handleMenu}
+          color="inherit"
+        >
+          <TranslateIcon />
+        </IconButton>
+      </Badge>
       <Menu
         id="menu-languagemenu"
         anchorEl={anchorEl}

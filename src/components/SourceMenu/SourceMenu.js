@@ -15,11 +15,6 @@ const SourceMenu = props => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = event => {
-    console.log(
-      "SourceMenu clicked",
-      event.currentTarget,
-      event.currentTarget.dataset.source
-    );
     setAnchorEl(null);
   };
 
