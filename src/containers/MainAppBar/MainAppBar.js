@@ -12,7 +12,12 @@ import LanguageMenu from "../../components/LanguageMenu/LanguageMenu";
 import CategoryMenu from "../../components/CategoryMenu/CategoryMenu";
 import SourceMenu from "../../components/SourceMenu/SourceMenu";
 
-import { setCountry, setLanguage, setCategory } from "../../store/actions";
+import {
+  setCountry,
+  setLanguage,
+  setCategory,
+  setSource,
+} from "../../store/actions";
 
 import { sampleCountries } from "../../data/sample_countries";
 import { sampleLanguages } from "../../data/sample_languages";
@@ -49,7 +54,11 @@ class MainAppBar extends Component {
               categories={this.props.categories}
               setCategory={this.props.setCategory}
             />
-            <SourceMenu sources={sampleSources.sources} />
+            <SourceMenu
+              source={this.props.source}
+              sources={this.props.sources}
+              setSource={this.props.setSource}
+            />
           </Toolbar>
         </AppBar>
       </div>
@@ -66,6 +75,7 @@ const mapDispatchToProps = dispatch => {
     setCountry: country => dispatch(setCountry(country)),
     setLanguage: language => dispatch(setLanguage(language)),
     setCategory: category => dispatch(setCategory(category)),
+    setSource: source => dispatch(setSource(source)),
   };
 };
 

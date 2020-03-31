@@ -1,6 +1,7 @@
 /* Action Types */
 export const GET_HEADLINES = "GET_HEADLINES";
 export const GET_SOURCES = "GET_SOURCES";
+export const SET_SOURCE = "SET_SOURCE";
 export const GET_CATEGORIES = "GET_CATEGORIES";
 export const SET_CATEGORY = "SET_CATEGORY";
 export const GET_LANGUAGES = "GET_LANGUAGES";
@@ -20,6 +21,13 @@ export function getHeadlines() {
 export function getSources() {
   return {
     type: GET_SOURCES,
+  };
+}
+
+export function setSource(source) {
+  return {
+    type: SET_SOURCE,
+    source: source,
   };
 }
 

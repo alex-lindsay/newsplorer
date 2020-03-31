@@ -6,6 +6,7 @@ import BusinessIcon from "@material-ui/icons/Business";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Tooltip from "@material-ui/core/Tooltip";
+import { Typography } from "@material-ui/core";
 
 const SourceMenu = props => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -16,6 +17,7 @@ const SourceMenu = props => {
   };
   const handleClose = event => {
     setAnchorEl(null);
+    props.setSource(event.currentTarget.dataset.source);
   };
 
   const menuItems = props.sources
@@ -65,6 +67,14 @@ const SourceMenu = props => {
         </MenuItem>
         {menuItems}
       </Menu>
+      <Typography
+        className={styles.source}
+        variant="h6"
+        noWrap
+        data-testid="source"
+      >
+        {props.source}
+      </Typography>
     </div>
   );
 };
