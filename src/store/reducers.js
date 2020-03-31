@@ -34,9 +34,15 @@ function appReducer(oldState = initialState, action) {
         state.language = action.language !== "" ? action.language : null;
       }
       break;
+    case "SET_CATEGORY":
+      if (action.category !== undefined) {
+        state.category = action.category !== "" ? action.category : null;
+      }
+      break;
     default:
       return state;
   }
+  console.log("After reducer", state);
   return state;
 }
 

@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./CategoryMenu.module.css";
 
 import IconButton from "@material-ui/core/IconButton";
+import Badge from "@material-ui/core/Badge";
 import CategoryIcon from "@material-ui/icons/Category";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -15,6 +16,7 @@ const CategoryMenu = props => {
   };
   const handleClose = event => {
     setAnchorEl(null);
+    props.setCategory(event.currentTarget.dataset.category);
   };
 
   const menuItems = props.categories
@@ -26,15 +28,24 @@ const CategoryMenu = props => {
     : null;
   return (
     <div className={styles.CategoryMenu} data-testid="category-menu">
-      <IconButton
-        aria-label="account of current user"
-        aria-controls="menu-categorymenu"
-        aria-haspopup="true"
-        onClick={handleMenu}
-        color="inherit"
+      <Badge
+        badgeContent={
+          props.category ? props.category.substring(0, 3) + "…" : null
+        }
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        color="secondary"
+        overlap="circle"
       >
-        <CategoryIcon />
-      </IconButton>
+        <IconButton
+          aria-label="account of current user"
+          aria-controls="menu-categorymenu"
+          aria-haspopup="true"
+          onClick={handleMenu}
+          color="inherit"
+        >
+          <CategoryIcon />
+        </IconButton>
+      </Badge>
       <Menu
         id="menu-categorymenu"
         anchorEl={anchorEl}

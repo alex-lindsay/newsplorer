@@ -2,6 +2,7 @@
 export const GET_HEADLINES = "GET_HEADLINES";
 export const GET_SOURCES = "GET_SOURCES";
 export const GET_CATEGORIES = "GET_CATEGORIES";
+export const SET_CATEGORY = "SET_CATEGORY";
 export const GET_LANGUAGES = "GET_LANGUAGES";
 export const SET_LANGUAGE = "SET_LANGUAGE";
 export const GET_COUNTRIES = "GET_COUNTRIES";
@@ -25,6 +26,13 @@ export function getSources() {
 export function getCategories() {
   return {
     type: GET_CATEGORIES,
+  };
+}
+
+export function setCategory(category) {
+  return {
+    type: SET_CATEGORY,
+    category: category,
   };
 }
 
