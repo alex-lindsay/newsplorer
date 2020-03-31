@@ -19,21 +19,23 @@ const initialState = {
   story: null,
 };
 
-function country(oldState = initialState.country, action) {
-  console.log("country reducer", { oldState });
+function country(oldState = initialState, action) {
+  let state = oldState.country;
+  console.log("country reducer", { state });
   switch (action.type) {
     case "SET_COUNTRY":
       return action.country !== "" ? action.country : null;
     default:
-      return oldState;
+      return state;
   }
 }
 
-function countries(oldState = initialState.countries, action) {
-  console.log("countries reducer", { oldState });
+function countries(oldState = initialState, action) {
+  let state = oldState.countries;
+  console.log("countries reducer", { state });
   switch (action.type) {
     default:
-      return oldState;
+      return state;
   }
 }
 
