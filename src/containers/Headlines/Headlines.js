@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
 import styles from "./Headlines.module.css";
+
 import { Container, Paper } from "@material-ui/core";
 import TableContainer from "@material-ui/core/TableContainer";
 import Table from "@material-ui/core/Table";
@@ -8,11 +11,18 @@ import TableBody from "@material-ui/core/TableBody";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 
-import { sampleHeadlines } from "../../data/sample_headlines";
-
 class Headlines extends Component {
   render() {
-    let rows = sampleHeadlines.articles;
+    let tableRows = this.props.headlines.articles
+      ? this.props.headlines.articles.map(row => (
+          <TableRow key={row.title}>
+            <TableCell align="center"></TableCell>
+            <TableCell align="left">{row.title}</TableCell>
+            <TableCell align="left">{row.author}</TableCell>
+            <TableCell align="center">{row.publishedAt}</TableCell>
+          </TableRow>
+        ))
+      : null;
     return (
       <Container className={styles.Headlines} data-testid="headlines">
         <TableContainer component={Paper}>
@@ -25,16 +35,7 @@ class Headlines extends Component {
                 <TableCell align="center">Date</TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>
-              {rows.map(row => (
-                <TableRow key={row.title}>
-                  <TableCell align="center"></TableCell>
-                  <TableCell align="left">{row.title}</TableCell>
-                  <TableCell align="left">{row.author}</TableCell>
-                  <TableCell align="center">{row.publishedAt}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
+            <TableBody>{tableRows}</TableBody>
           </Table>
         </TableContainer>{" "}
       </Container>
@@ -42,4 +43,10 @@ class Headlines extends Component {
   }
 }
 
-export default Headlines;
+const mapStateToProps = state => {
+  return {
+    headlines: state.headlines,
+    headlineVersion: state.headlineVersion,
+  };
+};
+export default connect(mapStateToProps)(Headlines);

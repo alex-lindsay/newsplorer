@@ -1,20 +1,29 @@
-import { sampleHeadlines } from "../data/sample_headlines";
-import { sampleSources } from "../data/sample_sources";
-import { sampleCategories } from "../data/sample_categories";
-import { sampleLanguages } from "../data/sample_languages";
-import { sampleCountries } from "../data/sample_countries";
+import {
+  SET_COUNTRY,
+  SET_LANGUAGE,
+  SET_CATEGORY,
+  SET_SOURCE,
+  INITIALIZE_SOURCES,
+  INITIALIZE_HEADLINES,
+} from "../store/actions";
 // import { combineReducers } from "redux";
 
 export const initialState = {
-  country: null,
-  countries: sampleCountries,
+  country: "us",
+  countries: [],
+  allCountries: [],
   language: null,
-  languages: sampleLanguages,
+  languages: [],
+  allLanguages: [],
   category: null,
-  categories: sampleCategories,
+  categories: [],
+  allCategories: [],
   source: null,
-  sources: sampleSources.sources,
-  headlines: sampleHeadlines.articles,
+  allSources: [],
+  sources: [],
+  sourcesAreInitialized: false,
+  headlines: [],
+  headlineVersion: 0,
   showStory: false,
   story: null,
 };
@@ -36,33 +45,57 @@ const filterSources = (country, language, category, sources) =>
       })
     : [];
 
+const countriesFromSources = sources =>
+  Array.from(new Set(sources.map(source => source.country)));
+
+const languagesFromSources = sources =>
+  Array.from(new Set(sources.map(source => source.language)));
+
+const categoriesFromSources = sources =>
+  Array.from(new Set(sources.map(source => source.category)));
+
 function appReducer(oldState = initialState, action) {
   let state = { ...oldState };
   state.countries = [...oldState.countries];
   state.languages = [...oldState.languages];
+  state.categories = [...oldState.categories];
   switch (action.type) {
-    case "SET_COUNTRY":
+    case SET_COUNTRY:
       if (action.country !== undefined) {
         state.country = action.country !== "" ? action.country : null;
         state.source = null;
       }
       break;
-    case "SET_LANGUAGE":
+    case SET_LANGUAGE:
       if (action.language !== undefined) {
         state.language = action.language !== "" ? action.language : null;
         state.source = null;
       }
       break;
-    case "SET_CATEGORY":
+    case SET_CATEGORY:
       if (action.category !== undefined) {
         state.category = action.category !== "" ? action.category : null;
         state.source = null;
       }
       break;
-    case "SET_SOURCE":
+    case SET_SOURCE:
       if (action.source !== undefined) {
         state.source = action.source !== "" ? action.source : null;
       }
+      break;
+    case INITIALIZE_SOURCES:
+      state.allSources = action.sources;
+      state.sources = action.sources;
+      state.sourcesAreInitialized = action.sourcesAreInitialized;
+      state.allCountries = countriesFromSources(state.allSources);
+      state.countries = countriesFromSources(state.sources);
+      state.allLanguages = languagesFromSources(state.allSources);
+      state.languages = languagesFromSources(state.sources);
+      state.allCategories = categoriesFromSources(state.allSources);
+      state.categories = categoriesFromSources(state.sources);
+      break;
+    case INITIALIZE_HEADLINES:
+      state.headlines = action.headlines;
       break;
     default:
       return state;
@@ -71,9 +104,9 @@ function appReducer(oldState = initialState, action) {
     state.country,
     state.language,
     state.category,
-    initialState.sources
+    state.allSources
   );
-  console.log("After reducer", state);
+  // console.log("After reducer", state);
   return state;
 }
 

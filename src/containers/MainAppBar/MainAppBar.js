@@ -19,11 +19,6 @@ import {
   setSource,
 } from "../../store/actions";
 
-import { sampleCountries } from "../../data/sample_countries";
-import { sampleLanguages } from "../../data/sample_languages";
-import { sampleCategories } from "../../data/sample_categories";
-import { sampleSources } from "../../data/sample_sources";
-
 // refer to https://material-ui.com/components/app-bar/#PrimarySearchAppBar.js
 class MainAppBar extends Component {
   render() {
