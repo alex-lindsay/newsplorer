@@ -1,0 +1,26 @@
+.StoryTitle {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5em;
+  margin-bottom: 1em;
+}
+.titleLink {
+  cursor: pointer;
+}
+
+.titleLink:hover {
+  color: darkblue;
+}
+
+.StoryImage {
+  float: left;
+  margin: 0 0.5em 0.5em 0;
+  width: 33%;
+}
+
+.StoryImage img {
+  width: 100%;
+}
+
+.StoryContent {
+  text-align: justify;
+}
