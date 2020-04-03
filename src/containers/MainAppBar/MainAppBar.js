@@ -27,7 +27,7 @@ class MainAppBar extends Component {
   render() {
     return (
       <div className={styles.grow} data-testid="main-app-bar">
-        <AppBar position="static" data-testid="app-bar">
+        <AppBar position="sticky" data-testid="app-bar">
           <Toolbar data-testid="toolbar">
             <Typography
               className={styles.title}

@@ -12,6 +12,8 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import Tooltip from "@material-ui/core/Tooltip";
 import Paper from "@material-ui/core/Paper";
+import IconButton from "@material-ui/core/IconButton";
+import DescriptionIcon from "@material-ui/icons/Description";
 
 class Headlines extends Component {
   render() {
@@ -36,6 +38,16 @@ class Headlines extends Component {
             <TableCell align="center">
               {format(parseISO(row.publishedAt), "LLL d h:mmaaaaa")}
             </TableCell>
+            <TableCell align="center">
+              {" "}
+              <IconButton
+                aria-label={"Read More about " + row.description}
+                onClick={() => this.props.setStory(index)}
+                color="inherit"
+              >
+                <DescriptionIcon />
+              </IconButton>
+            </TableCell>
           </TableRow>
         ))
       : null;
@@ -49,6 +61,7 @@ class Headlines extends Component {
                 <TableCell align="center">Title</TableCell>
                 <TableCell align="center">Author</TableCell>
                 <TableCell align="center">Date</TableCell>
+                <TableCell align="center">&nbsp;</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>{tableRows}</TableBody>

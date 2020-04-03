@@ -11,6 +11,7 @@ import {
   setLanguage,
   setCategory,
   setSource,
+  setStory,
   getInitialSources,
   getHeadlines,
 } from "./store/actions";
@@ -21,7 +22,6 @@ class App extends Component {
   componentDidMount() {
     this.props.getInitialSources();
     this.props.setCountry("us");
-    // this.props.updateHeadlines({ country: "us" });
   }
 
   render() {
@@ -43,7 +43,10 @@ class App extends Component {
           headlineVersion={this.props.headlineVersion}
           updateHeadlines={this.props.updateHeadlines}
         />
-        <Headlines headlines={this.props.headlines} />
+        <Headlines
+          headlines={this.props.headlines}
+          setStory={this.props.setStory}
+        />
       </div>
     );
   }
@@ -70,6 +73,7 @@ const mapDispatchToProps = dispatch => {
     setLanguage: language => dispatch(setLanguage(language)),
     setCategory: category => dispatch(setCategory(category)),
     setSource: source => dispatch(setSource(source)),
+    setStory: story => dispatch(setStory(story)),
     getInitialSources: () => dispatch(getInitialSources()),
     updateHeadlines: params => dispatch(getHeadlines(params)),
   };

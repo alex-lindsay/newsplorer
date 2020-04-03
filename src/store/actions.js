@@ -5,6 +5,7 @@ export const SET_COUNTRY = "SET_COUNTRY";
 export const SET_LANGUAGE = "SET_LANGUAGE";
 export const SET_CATEGORY = "SET_CATEGORY";
 export const SET_SOURCE = "SET_SOURCE";
+export const SET_STORY = "SET_STORY";
 
 export const INITIALIZE_SOURCES = "INITIALIZE_SOURCES";
 
@@ -36,6 +37,13 @@ export function setSource(source) {
   return {
     type: SET_SOURCE,
     source: source,
+  };
+}
+
+export function setStory(story) {
+  return {
+    type: SET_STORY,
+    source: story,
   };
 }
 

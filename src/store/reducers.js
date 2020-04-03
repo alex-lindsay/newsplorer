@@ -3,6 +3,7 @@ import {
   SET_LANGUAGE,
   SET_CATEGORY,
   SET_SOURCE,
+  SET_STORY,
   INITIALIZE_SOURCES,
   INITIALIZE_HEADLINES,
 } from "../store/actions";
@@ -81,6 +82,11 @@ function appReducer(oldState = initialState, action) {
     case SET_SOURCE:
       if (action.source !== undefined) {
         state.source = action.source !== "" ? action.source : null;
+      }
+      break;
+    case SET_STORY:
+      if (action.story !== undefined) {
+        state.story = state.headlines[action.story];
       }
       break;
     case INITIALIZE_SOURCES:
