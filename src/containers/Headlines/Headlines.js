@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 
 import styles from "./Headlines.module.css";
 
@@ -13,9 +12,9 @@ import TableCell from "@material-ui/core/TableCell";
 
 class Headlines extends Component {
   render() {
-    let tableRows = this.props.headlines.articles
-      ? this.props.headlines.articles.map(row => (
-          <TableRow key={row.title}>
+    let tableRows = this.props.headlines
+      ? this.props.headlines.map((row, index) => (
+          <TableRow key={index}>
             <TableCell align="center"></TableCell>
             <TableCell align="left">{row.title}</TableCell>
             <TableCell align="left">{row.author}</TableCell>
@@ -43,10 +42,4 @@ class Headlines extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    headlines: state.headlines,
-    headlineVersion: state.headlineVersion,
-  };
-};
-export default connect(mapStateToProps)(Headlines);
+export default Headlines;

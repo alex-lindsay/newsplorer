@@ -17,7 +17,7 @@ const SourceMenu = props => {
   };
   const handleClose = event => {
     setAnchorEl(null);
-    props.setSource(event.currentTarget.dataset.source);
+    props.setSource(event.currentTarget.dataset.sourceid);
   };
 
   const menuItems = props.sources
@@ -30,7 +30,11 @@ const SourceMenu = props => {
             placement="right"
             aria-label={source.description}
           >
-            <MenuItem onClick={handleClose} data-source={source.name}>
+            <MenuItem
+              onClick={handleClose}
+              data-source={source.name}
+              data-sourceid={source.id}
+            >
               {source.name}
             </MenuItem>
           </Tooltip>
@@ -62,7 +66,7 @@ const SourceMenu = props => {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem key="-" onClick={handleClose} data-source="">
+        <MenuItem key="-" onClick={handleClose} data-source="" data-sourceid="">
           None
         </MenuItem>
         {menuItems}

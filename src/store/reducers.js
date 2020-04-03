@@ -9,7 +9,7 @@ import {
 // import { combineReducers } from "redux";
 
 export const initialState = {
-  country: "us",
+  country: null,
   countries: [],
   allCountries: [],
   language: null,

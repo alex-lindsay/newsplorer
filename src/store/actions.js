@@ -57,7 +57,6 @@ export function getInitialSources() {
       .then(response => {
         console.log("after axios", response.data);
         dispatch(initializeSources(response.data));
-        dispatch(getHeadlines());
       })
       .catch(error => {
         console.warn("TODO REPLACE THIS WITH AN ERROR DISPATCH");
@@ -70,19 +69,42 @@ export function initializeHeadlines(data) {
   return {
     type: INITIALIZE_HEADLINES,
     headlines: data ? data.articles : [],
-    headlineVersion: Date.now(),
+    headlineVersion: Math.floor(Date.now() / 10000) * 10000,
   };
 }
 
 export function getHeadlines() {
-  return function(dispatch) {
+  return function(dispatch, getState) {
     console.log("getHeadlines");
+    const state = getState();
+    let query = [];
+    if (state.country) {
+      query.push(`country=${state.country}`);
+    }
+    if (state.language) {
+      query.push(`language=${state.language}`);
+    }
+    if (state.category) {
+      query.push(`category=${state.category}`);
+    }
+    if (state.sources.length !== 0) {
+      let sources = state.sources.map(source => source.id);
+      let sourcesString = sources.join(",");
+      query = [`sources=${sourcesString}`];
+    }
+    if (state.source) {
+      query = [`sources=${state.source}`];
+    }
+    let queryString = query.join("&");
+    console.log("query", query, queryString);
+    // let sources = state.sources.map(source => source.id).join(",");
     return axios
       .get(
-        `https://newsapi.org/v2/top-headlines?country=us&apiKey=debcc9b1affb485da106a7b5b422abc0`
+        `https://newsapi.org/v2/top-headlines?${queryString}&apiKey=debcc9b1affb485da106a7b5b422abc0`
       )
       .then(response => {
         console.log("after axios", response.data);
+        response.data.articles.sort((l, r) => (l < r ? -1 : 1));
         dispatch(initializeHeadlines(response.data));
       })
       .catch(error => {

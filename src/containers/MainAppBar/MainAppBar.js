@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -12,15 +11,19 @@ import LanguageMenu from "../../components/LanguageMenu/LanguageMenu";
 import CategoryMenu from "../../components/CategoryMenu/CategoryMenu";
 import SourceMenu from "../../components/SourceMenu/SourceMenu";
 
-import {
-  setCountry,
-  setLanguage,
-  setCategory,
-  setSource,
-} from "../../store/actions";
-
 // refer to https://material-ui.com/components/app-bar/#PrimarySearchAppBar.js
 class MainAppBar extends Component {
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.country !== prevProps.country ||
+      this.props.language !== prevProps.language ||
+      this.props.category !== prevProps.category ||
+      this.props.source !== prevProps.source
+    ) {
+      this.props.updateHeadlines();
+    }
+  }
+
   render() {
     return (
       <div className={styles.grow} data-testid="main-app-bar">
@@ -61,17 +64,4 @@ class MainAppBar extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return state;
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    setCountry: country => dispatch(setCountry(country)),
-    setLanguage: language => dispatch(setLanguage(language)),
-    setCategory: category => dispatch(setCategory(category)),
-    setSource: source => dispatch(setSource(source)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(MainAppBar);
+export default MainAppBar;

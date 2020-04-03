@@ -21,7 +21,12 @@ const CategoryMenu = props => {
 
   const menuItems = props.categories
     ? props.categories.sort().map(category => (
-        <MenuItem key={category} onClick={handleClose} data-category={category}>
+        <MenuItem
+          key={category}
+          onClick={handleClose}
+          data-category={category}
+          data-categoryid={category}
+        >
           {category}
         </MenuItem>
       ))
@@ -61,7 +66,12 @@ const CategoryMenu = props => {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem key="-" onClick={handleClose} data-category="">
+        <MenuItem
+          key="-"
+          onClick={handleClose}
+          data-category=""
+          data-categoryid=""
+        >
           None
         </MenuItem>
         {menuItems}
