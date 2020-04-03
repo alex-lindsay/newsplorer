@@ -1,0 +1,15 @@
+.Story {
+  margin: 5vw auto;
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 90vh;
+  width: 95vw;
+  z-index: 1200;
+  background: white;
+  /* add opacity to see if the other view is actually kept below */
+  opacity: 0.9;
+}

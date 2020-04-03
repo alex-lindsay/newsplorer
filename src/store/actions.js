@@ -43,7 +43,7 @@ export function setSource(source) {
 export function setStory(story) {
   return {
     type: SET_STORY,
-    source: story,
+    story: story,
   };
 }
 

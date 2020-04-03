@@ -85,8 +85,10 @@ function appReducer(oldState = initialState, action) {
       }
       break;
     case SET_STORY:
-      if (action.story !== undefined) {
+      if (action.story !== undefined && action.story != null) {
         state.story = state.headlines[action.story];
+      } else {
+        state.story = null;
       }
       break;
     case INITIALIZE_SOURCES:

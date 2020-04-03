@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 
 import "./App.css";
 
+import Story from "./containers/Story/Story";
+
 import MainAppBar from "./containers/MainAppBar/MainAppBar";
 import Headlines from "./containers/Headlines/Headlines";
 
@@ -25,6 +27,10 @@ class App extends Component {
   }
 
   render() {
+    const storyContainer =
+      this.props.story !== null ? (
+        <Story story={this.props.story} setStory={this.props.setStory}></Story>
+      ) : null;
     return (
       <div className="App" data-testid="app">
         <MainAppBar
@@ -47,6 +53,7 @@ class App extends Component {
           headlines={this.props.headlines}
           setStory={this.props.setStory}
         />
+        {storyContainer}
       </div>
     );
   }
@@ -64,6 +71,7 @@ const mapStateToProps = state => {
     sources: state.sources,
     headlineVersion: state.headlineVersion,
     headlines: state.headlines,
+    story: state.story,
   };
 };
 
