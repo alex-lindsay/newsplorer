@@ -6,6 +6,7 @@ import {
   SET_STORY,
   INITIALIZE_SOURCES,
   INITIALIZE_HEADLINES,
+  RELATED_TOPICS,
 } from "../store/actions";
 // import { combineReducers } from "redux";
 
@@ -31,7 +32,7 @@ export const initialState = {
 
 const filterSources = (country, language, category, sources) =>
   sources
-    ? sources.filter(source => {
+    ? sources.filter((source) => {
         let result = true;
         if (country !== null && source.country !== country) {
           result = false;
@@ -46,14 +47,14 @@ const filterSources = (country, language, category, sources) =>
       })
     : [];
 
-const countriesFromSources = sources =>
-  Array.from(new Set(sources.map(source => source.country)));
+const countriesFromSources = (sources) =>
+  Array.from(new Set(sources.map((source) => source.country)));
 
-const languagesFromSources = sources =>
-  Array.from(new Set(sources.map(source => source.language)));
+const languagesFromSources = (sources) =>
+  Array.from(new Set(sources.map((source) => source.language)));
 
-const categoriesFromSources = sources =>
-  Array.from(new Set(sources.map(source => source.category)));
+const categoriesFromSources = (sources) =>
+  Array.from(new Set(sources.map((source) => source.category)));
 
 function appReducer(oldState = initialState, action) {
   let state = { ...oldState };
@@ -104,6 +105,9 @@ function appReducer(oldState = initialState, action) {
       break;
     case INITIALIZE_HEADLINES:
       state.headlines = action.headlines;
+      break;
+    case RELATED_TOPICS:
+      console.log("RELATED TOPICS****", action);
       break;
     default:
       return state;
