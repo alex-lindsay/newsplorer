@@ -28,9 +28,9 @@ class Headlines extends Component {
               ) : null}
             </TableCell>
             <Tooltip
-              title={row.description}
+              title={row.description + " "}
               placement="bottom"
-              aria-label={row.description}
+              aria-label={row.description + " "}
             >
               <TableCell align="left">{row.title}</TableCell>
             </Tooltip>
