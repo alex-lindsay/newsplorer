@@ -1,3 +1,6 @@
 .HeadlineImage img {
   margin: 5px 5px -2px;
+  max-width: 100px;
+  max-height: 100px;
+  overflow: hidden;
 }
