@@ -8,6 +8,8 @@ export const SET_SOURCE = "SET_SOURCE";
 export const SET_STORY = "SET_STORY";
 export const ADD_RELATED_TOPICS = "ADD_RELATED_TOPICS";
 export const RELATED_TOPICS = "RELATED_TOPICS";
+export const SET_TOPIC_RELATED_ARTICLE = "SET_TOPIC_RELATED_ARTICLE";
+export const SET_ARTICLE_RELATED_TOPICS = "SET_ARTICLE_RELATED_TOPICS";
 
 export const INITIALIZE_SOURCES = "INITIALIZE_SOURCES";
 
@@ -147,6 +149,7 @@ function relatedTopicsFromHeadlines(dispatch, headlines) {
     }
     articlesTopics[article.title] = articleTopics;
     // console.log(words);
+    dispatch(setArticleRelatedTopics(article, articleTopics));
   });
   console.log(topics, articlesTopics);
   // TODO - I need to get the language associated with the article from
@@ -154,24 +157,120 @@ function relatedTopicsFromHeadlines(dispatch, headlines) {
   for (let topic in topics) {
     dispatch(getRelatedContent(topic));
   }
-  console.log(topics, articlesTopics);
-  return { type: RELATED_TOPICS, topics, articlesTopics };
+  // return { type: RELATED_TOPICS, topics, articlesTopics };
+}
+
+export function setArticleRelatedTopics(article, topics) {
+  return {
+    type: SET_ARTICLE_RELATED_TOPICS,
+    article,
+    topics,
+  };
 }
 
 export function getRelatedContent(topic, language = "en") {
   return function (dispatch, getState) {
-    axios
-      .get("https://www.mediawiki.org/w/api.php", {
+    console.log("getRelatedContent", topic, "START");
+    return axios
+      .get("https://en.wikipedia.org/w/api.php", {
         params: {
-          srsearch: topic,
           action: "query",
           list: "search",
-          srsort: "relevance",
+          prop: "info|extracts",
+          exsentences: 5,
+          inprop: "url",
+          utf8: "",
           format: "json",
+          origin: "*",
+          srlimit: 3,
+          srsearch: topic,
         },
       })
-      .then((res) => console.log(topic, res))
-      .catch((err) => console.error(topic, err));
+      .then((res) => {
+        console.log("Wikipedia", topic, res);
+        if (
+          res.data &&
+          res.data.query &&
+          res.data.query.search &&
+          res.data.query.searchinfo.totalhits < 1000000
+        ) {
+          res.data.query.search.forEach((result) => {
+            console.log("ABOUT TO SEND TO GET SUMMARY", result.title);
+            dispatch(
+              getRelatedWikipediaSummaries(
+                dispatch,
+                topic,
+                result.title,
+                language
+              )
+            );
+          });
+        }
+      })
+      .catch((err) => console.error("Wikipedia", topic, err.message));
+  };
+}
+
+export function setTopicRelatedArticle(
+  topic,
+  relatedSource,
+  title,
+  language,
+  extract,
+  url
+) {
+  return {
+    type: SET_TOPIC_RELATED_ARTICLE,
+    topic,
+    relatedSource,
+    title,
+    language,
+    extract,
+    url,
+  };
+}
+
+export function getRelatedWikipediaSummaries(
+  dispatch,
+  topic,
+  title,
+  language = "en"
+) {
+  return function (dispatch, getState) {
+    console.log("getRelatedWikipediaSummaries", topic, "START");
+    return axios
+      .get("https://en.wikipedia.org/w/api.php", {
+        params: {
+          action: "query",
+          prop: "info|extracts",
+          exsentences: 5,
+          utf8: "",
+          format: "json",
+          origin: "*",
+          exlimit: 1,
+          titles: title,
+          explaintext: 1,
+          formatversion: 2,
+        },
+      })
+      .then((res) => {
+        console.log("Wikipedia Article Extract", topic, title, language, res);
+        dispatch(
+          setTopicRelatedArticle(
+            topic,
+            "wikipedia",
+            title,
+            language,
+            res.data.query.pages[0].extract,
+            encodeURI(
+              `https://${res.data.query.pages[0].pagelanguage}.wikipedia.org/wiki/${title}`
+            )
+          )
+        );
+      })
+      .catch((err) =>
+        console.error("Wikipedia Article Extract", topic, title, err.message)
+      );
   };
 }
 
@@ -179,36 +278,35 @@ export function getHeadlines() {
   return function (dispatch, getState) {
     console.log("getHeadlines");
     const state = getState();
-    let query = [];
+    let params = {};
     if (state.country) {
-      query.push(`country=${state.country}`);
+      params.country = state.country;
     }
     if (state.language) {
-      query.push(`language=${state.language}`);
+      params.language = state.language;
     }
     if (state.category) {
-      query.push(`category=${state.category}`);
+      params.category = state.category;
     }
     if (state.sources.length !== 0) {
       let sources = state.sources.map((source) => source.id);
       let sourcesString = sources.join(",");
-      query = [`sources=${sourcesString}`];
+      params.sources = sourcesString;
     }
     if (state.source) {
-      query = [`sources=${state.source}`];
+      params = { sources: state.source };
     }
-    let queryString = query.join("&");
     // console.log("query", query, queryString);
     // let sources = state.sources.map(source => source.id).join(",");
     return axios
-      .get(
-        `https://newsapi.org/v2/top-headlines?${queryString}&apiKey=debcc9b1affb485da106a7b5b422abc0`
-      )
+      .get(`https://newsapi.org/v2/top-headlines`, {
+        params: { ...params, apiKey: "debcc9b1affb485da106a7b5b422abc0" },
+      })
       .then((response) => {
         // console.log("after axios", response.data);
         response.data.articles.sort((l, r) => (l < r ? -1 : 1));
         dispatch(initializeHeadlines(response.data));
-        dispatch(relatedTopicsFromHeadlines(dispatch, response.data));
+        relatedTopicsFromHeadlines(dispatch, response.data);
       })
       .catch((error) => {
         console.warn("TODO REPLACE THIS WITH AN ERROR DISPATCH");

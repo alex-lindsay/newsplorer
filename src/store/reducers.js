@@ -1,3 +1,5 @@
+import { cloneDeep } from "lodash";
+
 import {
   SET_COUNTRY,
   SET_LANGUAGE,
@@ -7,6 +9,8 @@ import {
   INITIALIZE_SOURCES,
   INITIALIZE_HEADLINES,
   RELATED_TOPICS,
+  SET_TOPIC_RELATED_ARTICLE,
+  SET_ARTICLE_RELATED_TOPICS,
 } from "../store/actions";
 // import { combineReducers } from "redux";
 
@@ -28,6 +32,7 @@ export const initialState = {
   headlineVersion: 0,
   showStory: false,
   story: null,
+  topics: {},
 };
 
 const filterSources = (country, language, category, sources) =>
@@ -57,10 +62,10 @@ const categoriesFromSources = (sources) =>
   Array.from(new Set(sources.map((source) => source.category)));
 
 function appReducer(oldState = initialState, action) {
-  let state = { ...oldState };
-  state.countries = [...oldState.countries];
-  state.languages = [...oldState.languages];
-  state.categories = [...oldState.categories];
+  let state = cloneDeep(oldState);
+  // state.countries = [...oldState.countries];
+  // state.languages = [...oldState.languages];
+  // state.categories = [...oldState.categories];
   switch (action.type) {
     case SET_COUNTRY:
       if (action.country !== undefined) {
@@ -108,6 +113,29 @@ function appReducer(oldState = initialState, action) {
       break;
     case RELATED_TOPICS:
       console.log("RELATED TOPICS****", action);
+      break;
+    case SET_TOPIC_RELATED_ARTICLE:
+      if (!state.topics[action.topic]) {
+        state.topics[action.topic] = {};
+      }
+      if (!state.topics[action.topic][action.relatedSource]) {
+        state.topics[action.topic][action.relatedSource] = {};
+      }
+      state.topics[action.topic][action.relatedSource][action.title] = {
+        url: action.url,
+        extract: action.extract,
+      };
+      break;
+    case SET_ARTICLE_RELATED_TOPICS:
+      for (let index = 0; index < state.headlines.length; index++) {
+        if (
+          state.headlines[index].title === action.article.title &&
+          state.headlines[index].source.name === action.article.source.name
+        ) {
+          state.headlines[index].topics = action.topics;
+          break;
+        }
+      }
       break;
     default:
       return state;
