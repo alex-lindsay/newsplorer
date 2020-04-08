@@ -29,8 +29,7 @@ class WikipediaTopics extends Component {
         >
           Wikipedia Topics
         </Typography>
-        {/* {this.props.storyTopics.join("<br />")} */}
-        {wikipediaTopics}
+        <div className={styles.scroller}>{wikipediaTopics}</div>
       </div>
     );
   }

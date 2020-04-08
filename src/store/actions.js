@@ -1,4 +1,5 @@
 import axios from "axios";
+import wiki from "wikijs";
 
 /* Action Types */
 export const SET_COUNTRY = "SET_COUNTRY";
@@ -92,6 +93,10 @@ export function initializeHeadlines(data) {
   };
 }
 
+function topicIsLongEnough(topic) {
+  return topic.length >= 5;
+}
+
 function relatedTopicsFromHeadlines(dispatch, headlines) {
   const punctuation = "!@#$%^&*()_+`-={}|[]\\:\t\r\n\";'<>?,./“”‘’…";
   console.log("relatedTopicsFromHeadlines START");
@@ -138,7 +143,7 @@ function relatedTopicsFromHeadlines(dispatch, headlines) {
       // if the topic is to be closed (or it's the last word), add it (joined using spaces) to topics keyed on it in lowercase
       if (endOfTopic) {
         let topic = current.join(" ");
-        if (topic !== "") {
+        if (topicIsLongEnough(topic)) {
           topics[topic.toLowerCase()] = { text: topic };
           articleTopics.push(topic);
         }
@@ -151,7 +156,11 @@ function relatedTopicsFromHeadlines(dispatch, headlines) {
     // console.log(words);
     dispatch(setArticleRelatedTopics(article, articleTopics));
   });
-  console.log(topics, articlesTopics);
+  console.log({
+    function: "relatedTopicsFromHeadlines",
+    topics,
+    articlesTopics,
+  });
   // TODO - I need to get the language associated with the article from
   // the source to know what language to look up in mediawiki
   for (let topic in topics) {
@@ -171,43 +180,26 @@ export function setArticleRelatedTopics(article, topics) {
 export function getRelatedContent(topic, language = "en") {
   return function (dispatch, getState) {
     console.log("getRelatedContent", topic, "START");
-    return axios
-      .get("https://en.wikipedia.org/w/api.php", {
-        params: {
-          action: "query",
-          list: "search",
-          prop: "info|extracts",
-          exsentences: 5,
-          inprop: "url",
-          utf8: "",
-          format: "json",
-          origin: "*",
-          srlimit: 3,
-          srsearch: topic,
-        },
-      })
-      .then((res) => {
-        console.log("Wikipedia", topic, res);
-        if (
-          res.data &&
-          res.data.query &&
-          res.data.query.search &&
-          res.data.query.searchinfo.totalhits < 1000000
-        ) {
-          res.data.query.search.forEach((result) => {
-            console.log("ABOUT TO SEND TO GET SUMMARY", result.title);
+    return wiki()
+      .search(topic, 3)
+      .then((data) => {
+        console.log({
+          function: "getRelatedContent wiki.search",
+          topic,
+          data,
+        });
+        if (data && data.results) {
+          data.results.forEach((result) => {
+            console.log("ABOUT TO SEND TO GET SUMMARY", result);
             dispatch(
-              getRelatedWikipediaSummaries(
-                dispatch,
-                topic,
-                result.title,
-                language
-              )
+              getRelatedWikipediaSummaries(dispatch, topic, result, language)
             );
           });
         }
       })
-      .catch((err) => console.error("Wikipedia", topic, err.message));
+      .catch((err) => {
+        console.error("getRelatedContent Wikipedia", topic, err.message);
+      });
   };
 }
 
@@ -238,39 +230,76 @@ export function getRelatedWikipediaSummaries(
 ) {
   return function (dispatch, getState) {
     console.log("getRelatedWikipediaSummaries", topic, "START");
-    return axios
-      .get("https://en.wikipedia.org/w/api.php", {
-        params: {
-          action: "query",
-          prop: "info|extracts",
-          exsentences: 5,
-          utf8: "",
-          format: "json",
-          origin: "*",
-          exlimit: 1,
-          titles: title,
-          explaintext: 1,
-          formatversion: 2,
-        },
-      })
-      .then((res) => {
-        console.log("Wikipedia Article Extract", topic, title, language, res);
-        dispatch(
-          setTopicRelatedArticle(
+
+    return (
+      wiki()
+        .page(title)
+        .then((page) =>
+          Promise.all([
+            page.summary(),
+            page.fullInfo(),
+            page.images(),
+            page.url(),
+          ])
+        )
+        .then(([summary, fullInfo, images, url]) => {
+          console.log({
+            function: "getRelatedWikipediaSummaries",
             topic,
-            "wikipedia",
             title,
-            language,
-            res.data.query.pages[0].extract,
-            encodeURI(
-              `https://${res.data.query.pages[0].pagelanguage}.wikipedia.org/wiki/${title}`
+            summary,
+            fullInfo,
+            images,
+            url,
+          });
+          dispatch(
+            setTopicRelatedArticle(
+              topic,
+              "wikipedia",
+              title,
+              language,
+              summary,
+              url
             )
-          )
-        );
-      })
-      .catch((err) =>
-        console.error("Wikipedia Article Extract", topic, title, err.message)
-      );
+          );
+        })
+        // })
+        .catch((err) => console.error({ topic, err }))
+    );
+
+    // return axios
+    //   .get("https://en.wikipedia.org/w/api.php", {
+    //     params: {
+    //       action: "query",
+    //       prop: "info|extracts",
+    //       exsentences: 5,
+    //       utf8: "",
+    //       format: "json",
+    //       origin: "*",
+    //       exlimit: 1,
+    //       titles: title,
+    //       explaintext: 1,
+    //       formatversion: 2,
+    //     },
+    //   })
+    //   .then((res) => {
+    //     console.log("Wikipedia Article Extract", topic, title, language, res);
+    //     dispatch(
+    //       setTopicRelatedArticle(
+    //         topic,
+    //         "wikipedia",
+    //         title,
+    //         language,
+    //         res.data.query.pages[0].extract,
+    //         encodeURI(
+    //           `https://${res.data.query.pages[0].pagelanguage}.wikipedia.org/wiki/${title}`
+    //         )
+    //       )
+    //     );
+    //   })
+    //   .catch((err) =>
+    //     console.error("Wikipedia Article Extract", topic, title, err.message)
+    //   );
   };
 }
 
