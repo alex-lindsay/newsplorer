@@ -11,6 +11,7 @@ import StoryTitle from "../../components/Story/StoryTitle";
 import StoryImage from "../../components/Story/StoryImage";
 import StoryContent from "../../components/Story/StoryContent";
 import StoryPublishedDate from "../../components/Story/StoryPublishedDate";
+import RelatedContent from "../RelatedContent/RelatedContent";
 
 class Story extends Component {
   render() {
@@ -44,7 +45,10 @@ class Story extends Component {
               />
               <StoryContent content={this.props.story.content} />
             </div>
-            <div className={styles.RelatedContent}>RelatedContent</div>
+            <RelatedContent
+              topics={this.props.topics}
+              storyTopics={this.props.story.topics}
+            />
           </div>
         </Paper>
       </Slide>

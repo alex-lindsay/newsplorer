@@ -29,7 +29,11 @@ class App extends Component {
   render() {
     const storyContainer =
       this.props.story !== null ? (
-        <Story story={this.props.story} setStory={this.props.setStory}></Story>
+        <Story
+          story={this.props.story}
+          topics={this.props.topics}
+          setStory={this.props.setStory}
+        ></Story>
       ) : null;
     return (
       <div className="App" data-testid="app">
@@ -59,7 +63,7 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     country: state.country,
     countries: state.countries,
@@ -72,18 +76,19 @@ const mapStateToProps = state => {
     headlineVersion: state.headlineVersion,
     headlines: state.headlines,
     story: state.story,
+    topics: state.topics,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    setCountry: country => dispatch(setCountry(country)),
-    setLanguage: language => dispatch(setLanguage(language)),
-    setCategory: category => dispatch(setCategory(category)),
-    setSource: source => dispatch(setSource(source)),
-    setStory: story => dispatch(setStory(story)),
+    setCountry: (country) => dispatch(setCountry(country)),
+    setLanguage: (language) => dispatch(setLanguage(language)),
+    setCategory: (category) => dispatch(setCategory(category)),
+    setSource: (source) => dispatch(setSource(source)),
+    setStory: (story) => dispatch(setStory(story)),
     getInitialSources: () => dispatch(getInitialSources()),
-    updateHeadlines: params => dispatch(getHeadlines(params)),
+    updateHeadlines: (params) => dispatch(getHeadlines(params)),
   };
 };
 
