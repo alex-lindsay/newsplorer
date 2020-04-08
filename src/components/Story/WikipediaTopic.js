@@ -4,10 +4,10 @@ import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import Typography from "@material-ui/core/Typography";
-import LaunchIcon from "@material-ui/icons/Web";
+import LaunchIcon from "@material-ui/icons/Launch";
 
 const WikipediaTopic = (props) => {
-  const [expanded, setExpanded] = React.useState("panel1");
+  const [expanded, setExpanded] = React.useState("");
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -15,30 +15,16 @@ const WikipediaTopic = (props) => {
   // console.log("WIKIPEDIA TOPIC", props);
   let articles = [];
   for (let [title, { url, extract }] of Object.entries(props.topic.wikipedia)) {
+    let key = encodeURI(title);
     articles.push(
-      // <div key={title} className={styles.wikipediaTopic}>
-      //   <Typography className={styles.wikipediaTopicTitle} variant="h5">
-      //     {title}
-      //     <LaunchIcon
-      //       className={styles.titleLink}
-      //       fontSize="small"
-      //       onClick={() => {
-      //         window.open(url, "_blank");
-      //       }}
-      //     />
-      //   </Typography>
-      //   <div className={styles.wikipediaTopicExtract}>
-      //     <Typography variant="body1">{extract}</Typography>
-      //   </div>
-      // </div>
       <ExpansionPanel
         square
-        expanded={expanded === "panel1"}
-        onChange={handleChange("panel1")}
+        expanded={expanded === "panel" + key}
+        onChange={handleChange("panel" + key)}
       >
         <ExpansionPanelSummary
-          aria-controls="panel1d-content"
-          id="panel1d-header"
+          aria-controls={"panel" + key + "d-content"}
+          id={"panel" + key + "d-header"}
         >
           <Typography>
             {title}
@@ -52,7 +38,7 @@ const WikipediaTopic = (props) => {
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography variant="body1">{extract}</Typography>
+          <Typography variant={"body1" + key}>{extract}</Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
     );

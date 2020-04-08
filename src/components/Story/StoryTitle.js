@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Story.module.css";
 
 import Typography from "@material-ui/core/Typography";
-import LaunchIcon from "@material-ui/icons/Web";
+import LaunchIcon from "@material-ui/icons/Launch";
 
 const storyTitle = (props) => {
   return (

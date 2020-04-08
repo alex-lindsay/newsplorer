@@ -5,6 +5,7 @@
 }
 .titleLink {
   cursor: pointer;
+  color: #999;
 }
 
 .titleLink:hover {
