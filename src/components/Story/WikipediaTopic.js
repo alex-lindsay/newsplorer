@@ -26,7 +26,7 @@ const WikipediaTopic = (props) => {
           aria-controls={"panel" + key + "d-content"}
           id={"panel" + key + "d-header"}
         >
-          <Typography>
+          <Typography className={styles.wikipediaTopicTitle}>
             {title}
             <LaunchIcon
               className={styles.titleLink}
@@ -38,7 +38,12 @@ const WikipediaTopic = (props) => {
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography variant={"body1" + key}>{extract}</Typography>
+          <Typography
+            className={styles.wikipediaTopicExtract}
+            variant={"body1" + key}
+          >
+            {extract}
+          </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
     );
