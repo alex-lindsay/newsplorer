@@ -1,6 +1,8 @@
 .WikipediaTopics {
   text-align: justify;
-  max-height: 100%;
+  height: 100%;
+  overflow: scroll;
+  z-index: inherit;
 }
 
 .title {
@@ -11,7 +13,8 @@
 }
 
 .scroller {
-  max-height: 100%;
+  height: 100%;
   padding: 0 1em;
   overflow: scroll;
+  z-index: inherit;
 }
