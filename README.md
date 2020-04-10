@@ -1,3 +1,36 @@
+This project provides a way to:
+
+- browse headlines from around the world
+- select country, language, and/or type of source
+- link to the original source
+- and see related content
+
+Tools/resources/packages used for this project include (but are not limited to):
+
+- [create-react-app](https://create-react-app.dev/) - react application base template
+- newsapi.org - for collecting / filtering headlines
+  - requires API key
+- wikipedia.org - for related topic content
+- material-ui.com - for UI elements
+  - material-ui/core
+  - material-ui/icons
+- redux - for state management
+  - redux-logger - logs actions/state changes
+  - redux-thunk - execute asynchronous actions
+- axios - general API execution (newsapi.org)
+- wikijs - MediaWiki API execution
+
+Functionality still to be added:
+
+- add a search bar to filter articles by
+- add images to related wikipedia topics
+- add related images to story content
+- adjust layout for mobile
+- filter topics to exclude common words
+- allow users to add related keywords, or exclude topics as unrelated
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
