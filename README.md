@@ -23,6 +23,8 @@ Tools/resources/packages used for this project include (but are not limited to):
 Functionality still to be added:
 
 - add a search bar to filter articles by
+- add pagination for article list
+- caching of articles and wikipedia topics to reduce API use
 - add images to related wikipedia topics
 - add related images to story content
 - adjust layout for mobile

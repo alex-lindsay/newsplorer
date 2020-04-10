@@ -14,6 +14,7 @@ import {
   setCategory,
   setSource,
   setStory,
+  setSearchKey,
   getInitialSources,
   getHeadlines,
 } from "./store/actions";
@@ -50,6 +51,8 @@ class App extends Component {
           source={this.props.source}
           sources={this.props.sources}
           setSource={this.props.setSource}
+          searchKey={this.props.searchKey}
+          setSearchKey={this.props.setSearchKey}
           headlineVersion={this.props.headlineVersion}
           updateHeadlines={this.props.updateHeadlines}
         />
@@ -75,6 +78,7 @@ const mapStateToProps = (state) => {
     sources: state.sources,
     headlineVersion: state.headlineVersion,
     headlines: state.headlines,
+    searchKey: state.searchKey,
     story: state.story,
     topics: state.topics,
   };
@@ -87,6 +91,7 @@ const mapDispatchToProps = (dispatch) => {
     setCategory: (category) => dispatch(setCategory(category)),
     setSource: (source) => dispatch(setSource(source)),
     setStory: (story) => dispatch(setStory(story)),
+    setSearchKey: (searchKey) => dispatch(setSearchKey(searchKey)),
     getInitialSources: () => dispatch(getInitialSources()),
     updateHeadlines: (params) => dispatch(getHeadlines(params)),
   };

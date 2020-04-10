@@ -11,6 +11,7 @@ export const ADD_RELATED_TOPICS = "ADD_RELATED_TOPICS";
 export const RELATED_TOPICS = "RELATED_TOPICS";
 export const SET_TOPIC_RELATED_ARTICLE = "SET_TOPIC_RELATED_ARTICLE";
 export const SET_ARTICLE_RELATED_TOPICS = "SET_ARTICLE_RELATED_TOPICS";
+export const SET_SEARCH_KEY = "SET_SEARCH_KEY";
 
 export const INITIALIZE_SOURCES = "INITIALIZE_SOURCES";
 
@@ -231,75 +232,38 @@ export function getRelatedWikipediaSummaries(
   return function (dispatch, getState) {
     console.log("getRelatedWikipediaSummaries", topic, "START");
 
-    return (
-      wiki()
-        .page(title)
-        .then((page) =>
-          Promise.all([
-            page.summary(),
-            page.fullInfo(),
-            page.images(),
-            page.url(),
-          ])
-        )
-        .then(([summary, fullInfo, images, url]) => {
-          console.log({
-            function: "getRelatedWikipediaSummaries",
+    return wiki()
+      .page(title)
+      .then((page) =>
+        Promise.all([
+          page.summary(),
+          page.fullInfo(),
+          page.images(),
+          page.url(),
+        ])
+      )
+      .then(([summary, fullInfo, images, url]) => {
+        console.log({
+          function: "getRelatedWikipediaSummaries",
+          topic,
+          title,
+          summary,
+          fullInfo,
+          images,
+          url,
+        });
+        dispatch(
+          setTopicRelatedArticle(
             topic,
+            "wikipedia",
             title,
+            language,
             summary,
-            fullInfo,
-            images,
-            url,
-          });
-          dispatch(
-            setTopicRelatedArticle(
-              topic,
-              "wikipedia",
-              title,
-              language,
-              summary,
-              url
-            )
-          );
-        })
-        // })
-        .catch((err) => console.error({ topic, err }))
-    );
-
-    // return axios
-    //   .get("https://en.wikipedia.org/w/api.php", {
-    //     params: {
-    //       action: "query",
-    //       prop: "info|extracts",
-    //       exsentences: 5,
-    //       utf8: "",
-    //       format: "json",
-    //       origin: "*",
-    //       exlimit: 1,
-    //       titles: title,
-    //       explaintext: 1,
-    //       formatversion: 2,
-    //     },
-    //   })
-    //   .then((res) => {
-    //     console.log("Wikipedia Article Extract", topic, title, language, res);
-    //     dispatch(
-    //       setTopicRelatedArticle(
-    //         topic,
-    //         "wikipedia",
-    //         title,
-    //         language,
-    //         res.data.query.pages[0].extract,
-    //         encodeURI(
-    //           `https://${res.data.query.pages[0].pagelanguage}.wikipedia.org/wiki/${title}`
-    //         )
-    //       )
-    //     );
-    //   })
-    //   .catch((err) =>
-    //     console.error("Wikipedia Article Extract", topic, title, err.message)
-    //   );
+            url
+          )
+        );
+      })
+      .catch((err) => console.error({ topic, err }));
   };
 }
 
@@ -321,12 +285,16 @@ export function getHeadlines() {
       let sources = state.sources.map((source) => source.id);
       let sourcesString = sources.join(",");
       params.sources = sourcesString;
+      delete params.country;
+      delete params.language;
+      delete params.category;
     }
     if (state.source) {
       params = { sources: state.source };
     }
-    // console.log("query", query, queryString);
-    // let sources = state.sources.map(source => source.id).join(",");
+    if (state.searchKey !== null) {
+      params.q = state.searchKey;
+    }
     return axios
       .get(`https://newsapi.org/v2/top-headlines`, {
         params: { ...params, apiKey: "debcc9b1affb485da106a7b5b422abc0" },
@@ -341,5 +309,13 @@ export function getHeadlines() {
         console.warn("TODO REPLACE THIS WITH AN ERROR DISPATCH");
         console.error("Error getting initial headlines:", error);
       });
+  };
+}
+
+export function setSearchKey(searchKey) {
+  console.log("setSearchKey", searchKey);
+  return {
+    type: SET_SEARCH_KEY,
+    searchKey: searchKey,
   };
 }

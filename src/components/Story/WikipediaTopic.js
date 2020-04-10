@@ -18,6 +18,7 @@ const WikipediaTopic = (props) => {
     let key = encodeURI(title);
     articles.push(
       <ExpansionPanel
+        key={key}
         square
         expanded={expanded === "panel" + key}
         onChange={handleChange("panel" + key)}
@@ -40,7 +41,7 @@ const WikipediaTopic = (props) => {
         <ExpansionPanelDetails>
           <Typography
             className={styles.wikipediaTopicExtract}
-            variant={"body1" + key}
+            variant={"body1"}
           >
             {extract}
           </Typography>

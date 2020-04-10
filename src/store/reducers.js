@@ -11,6 +11,7 @@ import {
   RELATED_TOPICS,
   SET_TOPIC_RELATED_ARTICLE,
   SET_ARTICLE_RELATED_TOPICS,
+  SET_SEARCH_KEY,
 } from "../store/actions";
 // import { combineReducers } from "redux";
 
@@ -32,6 +33,7 @@ export const initialState = {
   headlineVersion: 0,
   showStory: false,
   story: null,
+  searchKey: null,
   topics: {},
 };
 
@@ -136,6 +138,9 @@ function appReducer(oldState = initialState, action) {
           break;
         }
       }
+      break;
+    case SET_SEARCH_KEY:
+      state.searchKey = action.searchKey;
       break;
     default:
       return state;
