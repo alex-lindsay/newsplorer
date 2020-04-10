@@ -1,0 +1,41 @@
+.StoryTitle {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5em;
+  margin-bottom: 1em;
+}
+.titleLink {
+  cursor: pointer;
+  color: #999;
+}
+
+.titleLink:hover {
+  color: darkblue;
+}
+
+.StoryImage {
+  float: left;
+  margin: 0 0.5em 0.5em 0;
+  width: 33%;
+}
+
+.StoryImage img {
+  width: 100%;
+}
+
+.StoryContent {
+  text-align: justify;
+}
+
+.wikipediaTopic .wikipediaTopicTitle {
+  font-size: 90%;
+  font-weight: bold;
+}
+
+.wikipediaTopicExtract {
+  max-height: 250px;
+  overflow: scroll;
+  margin: 0 1em;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  font-size: 90%;
+}

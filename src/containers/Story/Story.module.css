@@ -1,0 +1,50 @@
+.Story {
+  margin: 5vw auto;
+  position: fixed;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 80vh;
+  width: 95vw;
+  z-index: 1200;
+  background: white;
+  /* add opacity to see if the other view is actually kept below */
+  opacity: 0.9;
+}
+
+.storyCancel {
+  cursor: pointer;
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
+}
+
+.storyCancel:hover {
+  color: darkred;
+}
+
+.StoryHolder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  overflow: scroll;
+  z-index: inherit;
+}
+
+.StoryDetail {
+  width: 66%;
+  border-right: 1px solid #ddd;
+  padding-right: 0.5em;
+}
+
+.StoryByLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 0 0.5em 0;
+}

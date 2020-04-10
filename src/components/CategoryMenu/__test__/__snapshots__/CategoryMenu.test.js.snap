@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches expected snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="CategoryMenu"
+    data-testid="category-menu"
+  >
+    <span
+      class="MuiBadge-root"
+    >
+      <button
+        aria-controls="menu-categorymenu"
+        aria-haspopup="true"
+        aria-label="account of current user"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiIconButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 2l-5.5 9h11z"
+            />
+            <circle
+              cx="17.5"
+              cy="17.5"
+              r="4.5"
+            />
+            <path
+              d="M3 13.5h8v8H3z"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+      <span
+        class="MuiBadge-badge MuiBadge-anchorOriginBottomRightCircle MuiBadge-colorSecondary MuiBadge-invisible"
+      />
+    </span>
+  </div>
+</DocumentFragment>
+`;

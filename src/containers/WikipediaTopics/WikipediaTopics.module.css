@@ -1,0 +1,20 @@
+.WikipediaTopics {
+  text-align: justify;
+  height: 100%;
+  overflow: scroll;
+  z-index: inherit;
+}
+
+.title {
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  padding: 0.5em 0;
+  margin: 0 0 0.5em;
+}
+
+.scroller {
+  height: 100%;
+  padding: 0 1em;
+  overflow: scroll;
+  z-index: inherit;
+}
