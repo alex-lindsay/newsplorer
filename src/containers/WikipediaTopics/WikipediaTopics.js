@@ -8,7 +8,7 @@ import styles from "./WikipediaTopics.module.css";
 class WikipediaTopics extends Component {
   render() {
     let storyTopics = [...new Set(this.props.storyTopics)].sort();
-    console.log({ storyTopics });
+    // console.log({ storyTopics });
     //TODO filter this to remove extraneous topics?
 
     let wikipediaTopics = storyTopics.map((storyTopic) =>

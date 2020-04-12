@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches expected snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="WikipediaTopics"
+  >
+    <h6
+      class="MuiTypography-root title MuiTypography-h6 MuiTypography-noWrap"
+      data-testid="wikipediatopics"
+    >
+      Wikipedia Topics
+    </h6>
+    <div
+      class="scroller"
+    />
+  </div>
+</DocumentFragment>
+`;

@@ -4,7 +4,719 @@ exports[`matches expected snapshot 1`] = `
 <DocumentFragment>
   <div
     class="MuiPaper-root Story MuiPaper-elevation4 MuiPaper-rounded"
+    data-testid="story"
     style="webkit-transform: none; transform: none; webkit-transition: -webkit-transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;"
-  />
+  >
+    <div
+      class="storyCancel"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"
+        />
+      </svg>
+    </div>
+    <div
+      class="StoryTitle"
+    >
+      <h4
+        class="MuiTypography-root title MuiTypography-h4"
+        data-testid="title"
+      >
+        Tina Fey, Adam Sandler Return To 'SNL' To Honor Hal Willner With Musical Tribute - HuffPost
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root titleLink MuiSvgIcon-fontSizeSmall"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+          />
+        </svg>
+      </h4>
+    </div>
+    <div
+      class="StoryHolder"
+    >
+      <div
+        class="StoryDetail"
+      >
+        <div
+          class="StoryByLine"
+        >
+          <div
+            class="StorySource"
+          >
+            <p
+              class="MuiTypography-root source MuiTypography-body1 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+              data-testid="source"
+            >
+              Huffpost.com
+            </p>
+          </div>
+          <div
+            class="StoryAuthor"
+          >
+            <p
+              class="MuiTypography-root author MuiTypography-body1 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+              data-testid="author"
+            >
+              Cole Delbyck
+            </p>
+          </div>
+          <div
+            class="StoryPublishedDate"
+          >
+            <p
+              class="MuiTypography-root publishedAt MuiTypography-body1 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+              data-testid="publishedat"
+            >
+              Apr 12 9:25a
+            </p>
+          </div>
+        </div>
+        <div
+          class="StoryImage"
+        >
+          <img
+            alt="The legendary music producer died this week with symptoms consistent with COVID-19."
+            src="https://img.huffingtonpost.com/asset/5e9336383000002903153f9c.png?ops=1200_630"
+          />
+        </div>
+        <div
+          class="StoryContent"
+        >
+          <p
+            class="MuiTypography-root content MuiTypography-body1"
+            data-testid="content"
+          >
+            “Saturday Night Live” stars of past and present came together to close out the show’s first-ever “at home” edition with a stirring tribute to legendary sketch music producer Hal Willner. 
+The “SNL” veteran, who had scored the late-night comedy series since t… [+2303 chars]
+          </p>
+        </div>
+      </div>
+      <div
+        class="RelatedContent"
+      >
+        <h5
+          class="MuiTypography-root title MuiTypography-h5 MuiTypography-noWrap"
+          data-testid="relatedcontenttitle"
+        >
+          Related Content
+        </h5>
+        <div
+          class="WikipediaTopics"
+        >
+          <h6
+            class="MuiTypography-root title MuiTypography-h6 MuiTypography-noWrap"
+            data-testid="wikipediatopics"
+          >
+            Wikipedia Topics
+          </h6>
+          <div
+            class="scroller"
+          >
+            <div
+              class="WikipediaTopic"
+            >
+              <h5
+                class="MuiTypography-root title MuiTypography-h5 MuiTypography-noWrap"
+                data-testid="relatedcontenttitle"
+              />
+              <div
+                class="MuiPaper-root MuiExpansionPanel-root MuiPaper-elevation1"
+              >
+                <div
+                  aria-controls="panelSaturday%20Night%20Live%20(season%2045)d-content"
+                  aria-disabled="false"
+                  aria-expanded="false"
+                  class="MuiButtonBase-root MuiExpansionPanelSummary-root"
+                  id="panelSaturday%20Night%20Live%20(season%2045)d-header"
+                  role="button"
+                  tabindex="0"
+                >
+                  <div
+                    class="MuiExpansionPanelSummary-content"
+                  >
+                    <p
+                      class="MuiTypography-root wikipediaTopicTitle MuiTypography-body1"
+                    >
+                      Saturday Night Live (season 45)
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root titleLink MuiSvgIcon-fontSizeSmall"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                        />
+                      </svg>
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="MuiCollapse-container MuiCollapse-hidden"
+                  style="min-height: 0px;"
+                >
+                  <div
+                    class="MuiCollapse-wrapper"
+                  >
+                    <div
+                      class="MuiCollapse-wrapperInner"
+                    >
+                      <div
+                        aria-labelledby="panelSaturday%20Night%20Live%20(season%2045)d-header"
+                        id="panelSaturday%20Night%20Live%20(season%2045)d-content"
+                        role="region"
+                      >
+                        <div
+                          class="MuiExpansionPanelDetails-root"
+                        >
+                          <p
+                            class="MuiTypography-root wikipediaTopicExtract MuiTypography-body1"
+                          >
+                            The forty-fifth season of the NBC comedy series Saturday Night Live (also branded Saturday Night Live 45 and SNL45) premiered on September 28, 2019, during the 2019–20 television season with host Woody Harrelson and musical guest Billie Eilish. This season featured the return of Eddie Murphy as host, on December 21, 2019, for the first time in 35 years. 
+Due to the coronavirus pandemic, the season was temporarily halted on March 16, 2020. The move came hours after New York City Mayor Bill de Blasio ordered all theaters in the city to close by the following morning. A previously announced episode hosted by John Krasinski with musical guest Dua Lipa, which would have aired on March 28, 2020, was among the episodes affected. The season resumed on April 11, 2020 with a special episode containing Weekend Update and other remotely produced contributions from the cast. The self-filmed episode, with pre-recorded from-home segments, was instead referred to as Saturday Night Live at Home. It was hosted by Tom Hanks, who survived coronavirus after being diagnosed the month prior.
+
+
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="MuiPaper-root MuiExpansionPanel-root MuiPaper-elevation1"
+              >
+                <div
+                  aria-controls="panelDeaths%20in%202020d-content"
+                  aria-disabled="false"
+                  aria-expanded="false"
+                  class="MuiButtonBase-root MuiExpansionPanelSummary-root"
+                  id="panelDeaths%20in%202020d-header"
+                  role="button"
+                  tabindex="0"
+                >
+                  <div
+                    class="MuiExpansionPanelSummary-content"
+                  >
+                    <p
+                      class="MuiTypography-root wikipediaTopicTitle MuiTypography-body1"
+                    >
+                      Deaths in 2020
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root titleLink MuiSvgIcon-fontSizeSmall"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                        />
+                      </svg>
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="MuiCollapse-container MuiCollapse-hidden"
+                  style="min-height: 0px;"
+                >
+                  <div
+                    class="MuiCollapse-wrapper"
+                  >
+                    <div
+                      class="MuiCollapse-wrapperInner"
+                    >
+                      <div
+                        aria-labelledby="panelDeaths%20in%202020d-header"
+                        id="panelDeaths%20in%202020d-content"
+                        role="region"
+                      >
+                        <div
+                          class="MuiExpansionPanelDetails-root"
+                        >
+                          <p
+                            class="MuiTypography-root wikipediaTopicExtract MuiTypography-body1"
+                          >
+                            The following deaths of notable individuals occurred in 2020. Names are reported under the date of death, in alphabetical order by surname or pseudonym.
+A typical entry reports information in the following sequence:
+
+Name, age, country of citizenship at birth, subsequent nationality (if applicable), what subject was noted for, cause of death (if known), and reference.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="MuiPaper-root MuiExpansionPanel-root MuiPaper-elevation1"
+              >
+                <div
+                  aria-controls="panelHal%20Willnerd-content"
+                  aria-disabled="false"
+                  aria-expanded="false"
+                  class="MuiButtonBase-root MuiExpansionPanelSummary-root"
+                  id="panelHal%20Willnerd-header"
+                  role="button"
+                  tabindex="0"
+                >
+                  <div
+                    class="MuiExpansionPanelSummary-content"
+                  >
+                    <p
+                      class="MuiTypography-root wikipediaTopicTitle MuiTypography-body1"
+                    >
+                      Hal Willner
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root titleLink MuiSvgIcon-fontSizeSmall"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                        />
+                      </svg>
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="MuiCollapse-container MuiCollapse-hidden"
+                  style="min-height: 0px;"
+                >
+                  <div
+                    class="MuiCollapse-wrapper"
+                  >
+                    <div
+                      class="MuiCollapse-wrapperInner"
+                    >
+                      <div
+                        aria-labelledby="panelHal%20Willnerd-header"
+                        id="panelHal%20Willnerd-content"
+                        role="region"
+                      >
+                        <div
+                          class="MuiExpansionPanelDetails-root"
+                        >
+                          <p
+                            class="MuiTypography-root wikipediaTopicExtract MuiTypography-body1"
+                          >
+                            Hal Willner (April 6, 1956 – April 7, 2020) was an American music producer working in recording, films, TV and live events. He was best known for assembling tribute albums and events featuring a wide variety of artists and musical styles (jazz, classical, rock, Tin Pan Alley).
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="WikipediaTopic"
+            >
+              <h5
+                class="MuiTypography-root title MuiTypography-h5 MuiTypography-noWrap"
+                data-testid="relatedcontenttitle"
+              />
+              <div
+                class="MuiPaper-root MuiExpansionPanel-root MuiPaper-elevation1"
+              >
+                <div
+                  aria-controls="panelSaturday%20Night%20Live%20(season%2045)d-content"
+                  aria-disabled="false"
+                  aria-expanded="false"
+                  class="MuiButtonBase-root MuiExpansionPanelSummary-root"
+                  id="panelSaturday%20Night%20Live%20(season%2045)d-header"
+                  role="button"
+                  tabindex="0"
+                >
+                  <div
+                    class="MuiExpansionPanelSummary-content"
+                  >
+                    <p
+                      class="MuiTypography-root wikipediaTopicTitle MuiTypography-body1"
+                    >
+                      Saturday Night Live (season 45)
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root titleLink MuiSvgIcon-fontSizeSmall"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                        />
+                      </svg>
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="MuiCollapse-container MuiCollapse-hidden"
+                  style="min-height: 0px;"
+                >
+                  <div
+                    class="MuiCollapse-wrapper"
+                  >
+                    <div
+                      class="MuiCollapse-wrapperInner"
+                    >
+                      <div
+                        aria-labelledby="panelSaturday%20Night%20Live%20(season%2045)d-header"
+                        id="panelSaturday%20Night%20Live%20(season%2045)d-content"
+                        role="region"
+                      >
+                        <div
+                          class="MuiExpansionPanelDetails-root"
+                        >
+                          <p
+                            class="MuiTypography-root wikipediaTopicExtract MuiTypography-body1"
+                          >
+                            The forty-fifth season of the NBC comedy series Saturday Night Live (also branded Saturday Night Live 45 and SNL45) premiered on September 28, 2019, during the 2019–20 television season with host Woody Harrelson and musical guest Billie Eilish. This season featured the return of Eddie Murphy as host, on December 21, 2019, for the first time in 35 years. 
+Due to the coronavirus pandemic, the season was temporarily halted on March 16, 2020. The move came hours after New York City Mayor Bill de Blasio ordered all theaters in the city to close by the following morning. A previously announced episode hosted by John Krasinski with musical guest Dua Lipa, which would have aired on March 28, 2020, was among the episodes affected. The season resumed on April 11, 2020 with a special episode containing Weekend Update and other remotely produced contributions from the cast. The self-filmed episode, with pre-recorded from-home segments, was instead referred to as Saturday Night Live at Home. It was hosted by Tom Hanks, who survived coronavirus after being diagnosed the month prior.
+
+
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="MuiPaper-root MuiExpansionPanel-root MuiPaper-elevation1"
+              >
+                <div
+                  aria-controls="panelSaturday%20Night%20Live%20cast%20membersd-content"
+                  aria-disabled="false"
+                  aria-expanded="false"
+                  class="MuiButtonBase-root MuiExpansionPanelSummary-root"
+                  id="panelSaturday%20Night%20Live%20cast%20membersd-header"
+                  role="button"
+                  tabindex="0"
+                >
+                  <div
+                    class="MuiExpansionPanelSummary-content"
+                  >
+                    <p
+                      class="MuiTypography-root wikipediaTopicTitle MuiTypography-body1"
+                    >
+                      Saturday Night Live cast members
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root titleLink MuiSvgIcon-fontSizeSmall"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                        />
+                      </svg>
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="MuiCollapse-container MuiCollapse-hidden"
+                  style="min-height: 0px;"
+                >
+                  <div
+                    class="MuiCollapse-wrapper"
+                  >
+                    <div
+                      class="MuiCollapse-wrapperInner"
+                    >
+                      <div
+                        aria-labelledby="panelSaturday%20Night%20Live%20cast%20membersd-header"
+                        id="panelSaturday%20Night%20Live%20cast%20membersd-content"
+                        role="region"
+                      >
+                        <div
+                          class="MuiExpansionPanelDetails-root"
+                        >
+                          <p
+                            class="MuiTypography-root wikipediaTopicExtract MuiTypography-body1"
+                          >
+                            As of September 2019, the late-night live variety series Saturday Night Live (SNL) has featured 153 cast members. The ensemble was originally referred to as the "Not Ready For Prime Time Players."
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="MuiPaper-root MuiExpansionPanel-root MuiPaper-elevation1"
+              >
+                <div
+                  aria-controls="panelSaturday%20Night%20Lived-content"
+                  aria-disabled="false"
+                  aria-expanded="false"
+                  class="MuiButtonBase-root MuiExpansionPanelSummary-root"
+                  id="panelSaturday%20Night%20Lived-header"
+                  role="button"
+                  tabindex="0"
+                >
+                  <div
+                    class="MuiExpansionPanelSummary-content"
+                  >
+                    <p
+                      class="MuiTypography-root wikipediaTopicTitle MuiTypography-body1"
+                    >
+                      Saturday Night Live
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root titleLink MuiSvgIcon-fontSizeSmall"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                        />
+                      </svg>
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="MuiCollapse-container MuiCollapse-hidden"
+                  style="min-height: 0px;"
+                >
+                  <div
+                    class="MuiCollapse-wrapper"
+                  >
+                    <div
+                      class="MuiCollapse-wrapperInner"
+                    >
+                      <div
+                        aria-labelledby="panelSaturday%20Night%20Lived-header"
+                        id="panelSaturday%20Night%20Lived-content"
+                        role="region"
+                      >
+                        <div
+                          class="MuiExpansionPanelDetails-root"
+                        >
+                          <p
+                            class="MuiTypography-root wikipediaTopicExtract MuiTypography-body1"
+                          >
+                            Saturday Night Live (also known as SNL) is an American late-night live television sketch comedy and variety show created by Lorne Michaels and developed by Dick Ebersol. The show premiered on NBC on October 11, 1975, under the original title NBC's Saturday Night. The show's comedy sketches, which often parody contemporary culture and politics, are performed by a large and varying cast of repertory and newer cast members. Each episode is hosted by a celebrity guest, who usually delivers the opening monologue and performs in sketches with the cast as with featured performances by a musical guest. An episode normally begins with a cold open sketch that ends with someone breaking character and proclaiming, "Live from New York, it's Saturday Night!", properly beginning the show.
+In 1980, Michaels left the series to explore other opportunities. He was replaced by Jean Doumanian, who was replaced by Ebersol after a season of bad reviews. Ebersol ran the show until 1985. Since Michaels' return he has held the job of show-runner. Many SNL cast members have found national stardom while appearing on the show, and achieved success in film and television, both in front of and behind the camera. Others associated with the show, such as writers, have gone on to successful careers creating, writing, and starring in television and film.
+Broadcast from Studio 8H at NBC's headquarters in the Comcast Building at 30 Rockefeller Plaza, SNL has aired 886 episodes since its debut, and began its forty-fifth season on September 28, 2019, making it one of the longest-running network television programs in the United States. The show format has been developed and recreated in several countries, meeting with different levels of success. Successful sketches have seen life outside the show as feature films including The Blues Brothers (1980) and Wayne's World (1992). The show has been marketed in other ways, including home media releases of "best of" and whole seasons, and books and documentaries about behind-the-scenes activities of running and developing the show.
+Throughout four decades on air, Saturday Night Live has received a number of awards, including 71 Primetime Emmy Awards, four Writers Guild of America Awards, and two Peabody Awards. In 2000, it was inducted into the National Association of Broadcasters Hall of Fame. It was ranked tenth in TV Guide's "50 Greatest TV Shows of All Time" list, and in 2007 it was listed as one of Time "100 Best TV Shows of All-TIME." As of 2018, the show had received 252 Primetime Emmy Award nominations, the most received by any television program. The live aspect of the show has resulted in several controversies and acts of censorship, with mistakes and intentional acts of sabotage by performers as well as guests.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="WikipediaTopic"
+            >
+              <h5
+                class="MuiTypography-root title MuiTypography-h5 MuiTypography-noWrap"
+                data-testid="relatedcontenttitle"
+              />
+              <div
+                class="MuiPaper-root MuiExpansionPanel-root MuiPaper-elevation1"
+              >
+                <div
+                  aria-controls="panelSaturday%20Night%20Live%20cast%20membersd-content"
+                  aria-disabled="false"
+                  aria-expanded="false"
+                  class="MuiButtonBase-root MuiExpansionPanelSummary-root"
+                  id="panelSaturday%20Night%20Live%20cast%20membersd-header"
+                  role="button"
+                  tabindex="0"
+                >
+                  <div
+                    class="MuiExpansionPanelSummary-content"
+                  >
+                    <p
+                      class="MuiTypography-root wikipediaTopicTitle MuiTypography-body1"
+                    >
+                      Saturday Night Live cast members
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root titleLink MuiSvgIcon-fontSizeSmall"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                        />
+                      </svg>
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="MuiCollapse-container MuiCollapse-hidden"
+                  style="min-height: 0px;"
+                >
+                  <div
+                    class="MuiCollapse-wrapper"
+                  >
+                    <div
+                      class="MuiCollapse-wrapperInner"
+                    >
+                      <div
+                        aria-labelledby="panelSaturday%20Night%20Live%20cast%20membersd-header"
+                        id="panelSaturday%20Night%20Live%20cast%20membersd-content"
+                        role="region"
+                      >
+                        <div
+                          class="MuiExpansionPanelDetails-root"
+                        >
+                          <p
+                            class="MuiTypography-root wikipediaTopicExtract MuiTypography-body1"
+                          >
+                            As of September 2019, the late-night live variety series Saturday Night Live (SNL) has featured 153 cast members. The ensemble was originally referred to as the "Not Ready For Prime Time Players."
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="MuiPaper-root MuiExpansionPanel-root MuiPaper-elevation1"
+              >
+                <div
+                  aria-controls="panelSaturday%20Night%20Live%20(season%2045)d-content"
+                  aria-disabled="false"
+                  aria-expanded="false"
+                  class="MuiButtonBase-root MuiExpansionPanelSummary-root"
+                  id="panelSaturday%20Night%20Live%20(season%2045)d-header"
+                  role="button"
+                  tabindex="0"
+                >
+                  <div
+                    class="MuiExpansionPanelSummary-content"
+                  >
+                    <p
+                      class="MuiTypography-root wikipediaTopicTitle MuiTypography-body1"
+                    >
+                      Saturday Night Live (season 45)
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root titleLink MuiSvgIcon-fontSizeSmall"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                        />
+                      </svg>
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="MuiCollapse-container MuiCollapse-hidden"
+                  style="min-height: 0px;"
+                >
+                  <div
+                    class="MuiCollapse-wrapper"
+                  >
+                    <div
+                      class="MuiCollapse-wrapperInner"
+                    >
+                      <div
+                        aria-labelledby="panelSaturday%20Night%20Live%20(season%2045)d-header"
+                        id="panelSaturday%20Night%20Live%20(season%2045)d-content"
+                        role="region"
+                      >
+                        <div
+                          class="MuiExpansionPanelDetails-root"
+                        >
+                          <p
+                            class="MuiTypography-root wikipediaTopicExtract MuiTypography-body1"
+                          >
+                            The forty-fifth season of the NBC comedy series Saturday Night Live (also branded Saturday Night Live 45 and SNL45) premiered on September 28, 2019, during the 2019–20 television season with host Woody Harrelson and musical guest Billie Eilish. This season featured the return of Eddie Murphy as host, on December 21, 2019, for the first time in 35 years. 
+Due to the coronavirus pandemic, the season was temporarily halted on March 16, 2020. The move came hours after New York City Mayor Bill de Blasio ordered all theaters in the city to close by the following morning. A previously announced episode hosted by John Krasinski with musical guest Dua Lipa, which would have aired on March 28, 2020, was among the episodes affected. The season resumed on April 11, 2020 with a special episode containing Weekend Update and other remotely produced contributions from the cast. The self-filmed episode, with pre-recorded from-home segments, was instead referred to as Saturday Night Live at Home. It was hosted by Tom Hanks, who survived coronavirus after being diagnosed the month prior.
+
+
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="MuiPaper-root MuiExpansionPanel-root MuiPaper-elevation1"
+              >
+                <div
+                  aria-controls="panelSaturday%20Night%20Lived-content"
+                  aria-disabled="false"
+                  aria-expanded="false"
+                  class="MuiButtonBase-root MuiExpansionPanelSummary-root"
+                  id="panelSaturday%20Night%20Lived-header"
+                  role="button"
+                  tabindex="0"
+                >
+                  <div
+                    class="MuiExpansionPanelSummary-content"
+                  >
+                    <p
+                      class="MuiTypography-root wikipediaTopicTitle MuiTypography-body1"
+                    >
+                      Saturday Night Live
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root titleLink MuiSvgIcon-fontSizeSmall"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                        />
+                      </svg>
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="MuiCollapse-container MuiCollapse-hidden"
+                  style="min-height: 0px;"
+                >
+                  <div
+                    class="MuiCollapse-wrapper"
+                  >
+                    <div
+                      class="MuiCollapse-wrapperInner"
+                    >
+                      <div
+                        aria-labelledby="panelSaturday%20Night%20Lived-header"
+                        id="panelSaturday%20Night%20Lived-content"
+                        role="region"
+                      >
+                        <div
+                          class="MuiExpansionPanelDetails-root"
+                        >
+                          <p
+                            class="MuiTypography-root wikipediaTopicExtract MuiTypography-body1"
+                          >
+                            Saturday Night Live (also known as SNL) is an American late-night live television sketch comedy and variety show created by Lorne Michaels and developed by Dick Ebersol. The show premiered on NBC on October 11, 1975, under the original title NBC's Saturday Night. The show's comedy sketches, which often parody contemporary culture and politics, are performed by a large and varying cast of repertory and newer cast members. Each episode is hosted by a celebrity guest, who usually delivers the opening monologue and performs in sketches with the cast as with featured performances by a musical guest. An episode normally begins with a cold open sketch that ends with someone breaking character and proclaiming, "Live from New York, it's Saturday Night!", properly beginning the show.
+In 1980, Michaels left the series to explore other opportunities. He was replaced by Jean Doumanian, who was replaced by Ebersol after a season of bad reviews. Ebersol ran the show until 1985. Since Michaels' return he has held the job of show-runner. Many SNL cast members have found national stardom while appearing on the show, and achieved success in film and television, both in front of and behind the camera. Others associated with the show, such as writers, have gone on to successful careers creating, writing, and starring in television and film.
+Broadcast from Studio 8H at NBC's headquarters in the Comcast Building at 30 Rockefeller Plaza, SNL has aired 886 episodes since its debut, and began its forty-fifth season on September 28, 2019, making it one of the longest-running network television programs in the United States. The show format has been developed and recreated in several countries, meeting with different levels of success. Successful sketches have seen life outside the show as feature films including The Blues Brothers (1980) and Wayne's World (1992). The show has been marketed in other ways, including home media releases of "best of" and whole seasons, and books and documentaries about behind-the-scenes activities of running and developing the show.
+Throughout four decades on air, Saturday Night Live has received a number of awards, including 71 Primetime Emmy Awards, four Writers Guild of America Awards, and two Peabody Awards. In 2000, it was inducted into the National Association of Broadcasters Hall of Fame. It was ranked tenth in TV Guide's "50 Greatest TV Shows of All Time" list, and in 2007 it was listed as one of Time "100 Best TV Shows of All-TIME." As of 2018, the show had received 252 Primetime Emmy Award nominations, the most received by any television program. The live aspect of the show has resulted in several controversies and acts of censorship, with mistakes and intentional acts of sabotage by performers as well as guests.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </DocumentFragment>
 `;

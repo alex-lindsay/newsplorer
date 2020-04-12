@@ -22,7 +22,7 @@ class Story extends Component {
         mountOnEnter
         unmountOnExit
       >
-        <Paper className={styles.Story} elevation={4}>
+        <Paper className={styles.Story} elevation={4} data-testid="story">
           <div className={styles.storyCancel}>
             <CancelIcon onClick={() => this.props.setStory(null)} />
           </div>
