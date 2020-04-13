@@ -106,7 +106,7 @@ exports[`matches expected snapshot 1`] = `
             <button
               aria-controls="menu-categorymenu"
               aria-haspopup="true"
-              aria-label="account of current user"
+              aria-label="available source categories"
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
               tabindex="0"
               type="button"
