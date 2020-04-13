@@ -7,25 +7,26 @@ import CategoryIcon from "@material-ui/icons/Category";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
-const CategoryMenu = props => {
+const CategoryMenu = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  const handleMenu = event => {
+  const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = event => {
+  const handleClose = (event) => {
     setAnchorEl(null);
     props.setCategory(event.currentTarget.dataset.category);
   };
 
   const menuItems = props.categories
-    ? props.categories.sort().map(category => (
+    ? props.categories.sort().map((category) => (
         <MenuItem
           key={category}
           onClick={handleClose}
           data-category={category}
           data-categoryid={category}
+          data-testid={"category-menuitem-" + category}
         >
           {category}
         </MenuItem>
@@ -42,7 +43,7 @@ const CategoryMenu = props => {
         overlap="circle"
       >
         <IconButton
-          aria-label="account of current user"
+          aria-label="available source categories"
           aria-controls="menu-categorymenu"
           aria-haspopup="true"
           onClick={handleMenu}

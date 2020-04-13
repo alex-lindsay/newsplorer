@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`matches expected snapshot 1`] = `
+exports[`matches expected snapshot with no selected category 1`] = `
 <DocumentFragment>
   <div
     class="CategoryMenu"
@@ -12,7 +12,7 @@ exports[`matches expected snapshot 1`] = `
       <button
         aria-controls="menu-categorymenu"
         aria-haspopup="true"
-        aria-label="account of current user"
+        aria-label="available source categories"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
         tabindex="0"
         type="button"
