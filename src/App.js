@@ -21,7 +21,7 @@ import {
 
 // import styles from "./ComponentName.module.css";
 
-class App extends Component {
+export class App extends Component {
   componentDidMount() {
     this.props.getInitialSources();
     this.props.setCountry("us");
