@@ -4,9 +4,12 @@ import { shallow, mount } from "enzyme";
 import CategoryMenu from "../CategoryMenu";
 
 import { sampleCategories } from "../../../data/sample_categories";
-import { ExpansionPanelActions } from "@material-ui/core";
+import { ExpansionPanelActions, MenuItem } from "@material-ui/core";
 
-const mockSetCategory = jest.fn();
+const mockSetCategory = jest.fn((event) => {
+  // console.log(event);
+  return event;
+});
 
 describe("CategoryMenu", () => {
   it("renders with no props", () => {
@@ -38,7 +41,7 @@ describe("CategoryMenu", () => {
     );
   });
 
-  it("sets the selected category when clicked", () => {
+  it("sets the selected category when list item is clicked", () => {
     const wrapper = mount(
       <CategoryMenu
         categories={sampleCategories}
@@ -53,7 +56,27 @@ describe("CategoryMenu", () => {
       .at(4)
       .simulate("click");
     expect(mockSetCategory).toHaveBeenCalled();
-    console.log(mockSetCategory.mock.results[0].value);
-    expect(mockSetCategory.mock.results[0].value).toBe(sampleCategories[4]);
+    // expects 3 because li[0] is the manually added "None"
+    expect(mockSetCategory.mock.results[0].value).toBe(sampleCategories[3]);
+  });
+
+  it("shows/hides menu when icon is clicked", () => {
+    const wrapper = mount(
+      <CategoryMenu
+        categories={sampleCategories}
+        category={null}
+        setCategory={mockSetCategory}
+      />
+    );
+    const menu = wrapper.find("div#menu-categorymenu").first();
+    const menuAttributes = menu.getDOMNode().attributes;
+
+    expect(menuAttributes.getNamedItem("aria-hidden").value).toBe("true");
+
+    wrapper.find("button").first().simulate("click");
+    expect(menuAttributes.getNamedItem("aria-hidden")).toBeNull();
+
+    wrapper.find(MenuItem).first().simulate("click");
+    expect(menuAttributes.getNamedItem("aria-hidden").value).toBe("true");
   });
 });
