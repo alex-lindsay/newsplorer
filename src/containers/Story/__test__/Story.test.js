@@ -1,16 +1,16 @@
 import React from "react";
 import { render, cleanup } from "@testing-library/react";
+import { shallow, mount } from "enzyme";
+import LaunchIcon from "@material-ui/icons/Launch";
+
 import Story from "../Story";
+import StoryTitle from "../../../components/Story/StoryTitle";
+import WikipediaTopic from "../../../components/Story/WikipediaTopic";
+
 import { sampleStory } from "../../../data/sample_story";
 import { sampleTopics } from "../../../data/sample_topics";
 
 afterEach(cleanup);
-
-// story={this.props.story}
-// topics={this.props.topics}
-// setStory={this.props.setStory}
-
-// console.log(sampleStory);
 
 it("renders Story without crashing", () => {
   const { getByTestId } = render(
@@ -24,4 +24,23 @@ it("matches expected snapshot", () => {
     <Story story={sampleStory} topics={sampleTopics} />
   );
   expect(asFragment()).toMatchSnapshot();
+});
+
+it("opens a new window when clicking on a title link", () => {
+  global.open = jest.fn();
+  const wrapper = mount(<Story story={sampleStory} topics={sampleTopics} />);
+  wrapper.find(StoryTitle).find(LaunchIcon).first().simulate("click");
+  expect(global.open).toBeCalled();
+});
+
+it("opens a new window when clicking on a wikipedia topic link", () => {
+  global.open = jest.fn();
+  const wrapper = mount(<Story story={sampleStory} topics={sampleTopics} />);
+  wrapper
+    .find(WikipediaTopic)
+    .first()
+    .find(LaunchIcon)
+    .first()
+    .simulate("click");
+  expect(global.open).toBeCalled();
 });
