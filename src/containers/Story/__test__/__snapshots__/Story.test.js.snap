@@ -1,5 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`TODO - check this test - expands wikipedia topic when clicked 1`] = `ReactWrapper {}`;
+
+exports[`TODO - check this test - expands wikipedia topic when clicked 2`] = `ReactWrapper {}`;
+
 exports[`matches expected snapshot 1`] = `
 <DocumentFragment>
   <div

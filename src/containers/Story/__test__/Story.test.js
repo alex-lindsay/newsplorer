@@ -44,3 +44,18 @@ it("opens a new window when clicking on a wikipedia topic link", () => {
     .simulate("click");
   expect(global.open).toBeCalled();
 });
+
+it("TODO - check this test - expands wikipedia topic when clicked", () => {
+  global.open = jest.fn();
+  const wrapper = mount(<Story story={sampleStory} topics={sampleTopics} />);
+  const firstWikipediaTopic = wrapper
+    .find(".MuiExpansionPanelSummary-root")
+    .first();
+  const secondWikipediaTopic = wrapper
+    .find(".MuiExpansionPanelSummary-root")
+    .at(2);
+  firstWikipediaTopic.simulate("click");
+  expect(wrapper).toMatchSnapshot();
+  secondWikipediaTopic.simulate("click");
+  expect(wrapper).toMatchSnapshot();
+});
