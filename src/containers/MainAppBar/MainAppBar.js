@@ -90,6 +90,25 @@ const MainAppBar = (props) => {
   const categoryHasChanged = useIsChanged(category);
   const sourceHasChanged = useIsChanged(source);
 
+  const handleSearchChange = (evt) => {
+    const value = evt.target.value;
+    if (searchTimer !== null) {
+      clearTimeout(searchTimer);
+    }
+    searchTimer = null;
+    if (value.length > 2) {
+      searchTimer = setTimeout(() => {
+        props.setSearchKey(value);
+        props.updateHeadlines();
+      }, 2000);
+    } else {
+      searchTimer = setTimeout(() => {
+        props.setSearchKey(null);
+        props.updateHeadlines();
+      }, 2000);
+    }
+  };
+
   let searchTimer = null;
 
   if (
@@ -138,24 +157,7 @@ const MainAppBar = (props) => {
               <SearchIcon />
             </div>
             <InputBase
-              onChange={(evt) => {
-                const value = evt.target.value;
-                if (searchTimer !== null) {
-                  clearTimeout(searchTimer);
-                }
-                searchTimer = null;
-                if (value.length > 2) {
-                  searchTimer = setTimeout(() => {
-                    props.setSearchKey(value);
-                    props.updateHeadlines();
-                  }, 2000);
-                } else {
-                  searchTimer = setTimeout(() => {
-                    props.setSearchKey(null);
-                    props.updateHeadlines();
-                  }, 2000);
-                }
-              }}
+              onChange={handleSearchChange}
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
